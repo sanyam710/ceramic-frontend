@@ -1,0 +1,106 @@
+<div class="sidebar close" id="sidebar">
+
+    <div class="logo-details">
+    <!--    
+        <img src="../../../../assets/images/isws-icon-white.svg" width="59px">
+        <div>
+            <span class="logo_name"><img src="../../../../assets/images/icons/tagline-white.svg" width="105px"></span>
+        </div> -->
+
+    </div>
+    <ul class="nav-links ">
+      <li class="single-menu pointer" (click)="goTo('agent/dashboard'); closeSideBar()" [pTooltip]="getTooltipText('Dashboard')">
+        <div class="single-icon-link">
+          <a class="link_name w-20" >
+           
+            <img class="nav-icons" src="../../../../assets/images/icons/home.svg" >
+            <span class="link_name">Home</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow pointer bg-purple'></i>
+          <!-- <i class='bx bxs-chevron-down arrow pointer'></i> -->
+        </div>
+        <!-- <ul class="sub-menu">
+          <li><a class="link_name">Home</a></li>
+          <li><a (click)="goTo('agent/dashboard'); closeSideBar()" class="pointer">Dashboard</a></li>
+        </ul> -->
+      </li>
+   
+      <li class="single-menu pointer" (click)="goTo('company_owner/products'); closeSideBar()" [pTooltip]="getTooltipText('Products')">
+        <div class="single-icon-link">
+          <a class="link_name w-20"  >
+            <img class="nav-icons" src="../../../../assets/images/icons/products.svg">
+            <span class="link_name">Products</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow pointer bg-purple'></i>
+          <!-- <i class='bx bxs-chevron-down arrow pointer'></i> -->
+        </div>
+        <!-- <ul class="sub-menu">
+          <li><a class="link_name">Lead</a></li>
+          <li><a (click)="goTo('agent/leads') ; closeSideBar()" class="pointer">Lead</a></li>
+        </ul> -->
+      </li>
+      <li *ngIf="!isSideBarOpen" class="sidebar-close-logout">
+        <div class="text-last-center">
+          <a class="link_name ">
+            <i class='bx bx-log-out logout-icon' (click)="logout()"></i>
+          </a>
+        </div>
+      </li>
+      <li>
+        <div class="profile-details">
+          <!-- <div class="profile-content"> -->
+          <!--<img src="image/profile.jpg" alt="profileImg">-->
+          <!-- </div> -->
+          <div class="name-job">
+            <div class="profile_name"> {{first_name}} {{last_name}}</div>
+            <!-- <div class="job">Web Desginer</div> -->
+          </div>
+          <i class='bx bx-log-out logout-icon' (click)="logout()"></i>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="overlay" id="overlay"></div>
+  <section class="home-section" style="overflow: auto;">
+    <div class="home-content page-topbar">
+      <button type="button" class="btn btn-sm px-3 fs-16 header-item vertical-menu-btn topnav-hamburger"
+        id="topnav-hamburger-icon" (click)="toggleSidebar()">
+        <span class="hamburger-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+      <div class="dropdown ms-sm-3 header-item topbar-user">
+        <button type="button" (click)="toogleDropdown()" class="btn " id="page-header-user-dropdown"
+          data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="d-flex align-items-center">
+            <i class=" ri-user-settings-line dp-font"></i>
+            <span class="text-start ms-xl-2">
+              <span class=" d-xl-inline-block ms-1 fw-semibold user-name-text">{{first_name}} {{last_name}}</span>
+              <!-- <span class=" d-xl-block ms-1 fs-12 user-name-sub-text">Founder</span> -->
+            </span>
+          </span>
+        </button>
+        <div class="dropdown-menu dropdown-menu-end profile-custom" id="dropdown-menu">
+          <!-- item-->
+          <h6 class="dropdown-header">Welcome {{first_name}} {{last_name}}!</h6>
+          <a class="dropdown-item pointer" (click)="goTo('company_owner/profile/details')"><i
+              class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
+              class="align-middle">Profile</span></a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item pointer" (click)="logout()"><i
+              class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle"
+              data-key="t-logout">Logout</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="dashboard-content">
+  
+      <router-outlet #content></router-outlet>
+    </div>
+  </section>
+  <app-toast></app-toast>
+  <!-- </div> -->
+  <!-- </body>
+  </html> -->

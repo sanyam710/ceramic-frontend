@@ -1,0 +1,12 @@
+<div *ngIf="toast?.alertClass=='success'"
+  [class]="'alert ' + 'alert-' + toast?.alertClass + ' alert-border-left alert-dismissible fade show toast-pos'"
+  role="alert">
+  <i class="ri-notification-off-line me-3 align-middle"></i>{{toast?.message}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<div *ngIf="toast?.alertClass=='error'"
+  [class]="'alert ' + 'alert-' + toast?.alertClass + ' alert-border-left alert-dismissible fade show toast-pos'"
+  role="alert">
+  <i class="ri-error-warning-line me-3 align-middle fs-16 text-danger"></i>{{toast?.message}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>

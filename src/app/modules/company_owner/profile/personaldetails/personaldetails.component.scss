@@ -1,0 +1,41 @@
+.card-form-links {
+    width: 210px;
+}
+
+// @media only screen and (min-width: 850px) {
+.link-card {
+    width: 50%;
+    font-size: 18px;
+    color: #6C6C6C;
+    font-weight: 600;
+}
+
+.text-parameter {
+    display: flex;
+    // height: 32px;
+    align-items: center;
+    font-size: 16px;
+}
+
+.parameter-value {
+    // height: 32px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+}
+
+.details-input {
+    font-size: 16px;
+    // height: 32px;
+    display: flex;
+    align-items: center;
+}
+
+.font-15 {
+    font-size: 15px;
+}
+
+.pad-12{
+    padding: 12px;
+}
+// }

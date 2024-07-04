@@ -1,0 +1,181 @@
+<div class="card mt-3">
+    <div class="content">
+        <div class="row mb-2">
+            <div class="d-flex justify-content-between">
+                <!-- <div class="d-flex gap-2"> -->
+
+                <h4>Personal Details</h4>
+                <div class="d-flex edit-copy-btn">
+
+                    <button (click)="editDetails()" class="btn btn-soft-primary btn-sm me-2">Edit<i
+                            class="ri-pencil-line ms-1"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3" *ngIf="!editProfileDetails" id="intimation-table">
+            <div class="row h-100 justify-content-between  ">
+                <div class="col-md-6 border-btm-same-pos left-box first-row">
+                    <div class="row  first-row-mob">
+                        <div class="d-flex margin-1">
+                            <div class="col-md-6 col-mobile">
+                                <div class="text-parameter"> First Name </div>
+                            </div>
+                            <div class="col-md-6 col-mobile">
+                                <div class="parameter-value">{{readData.first_name}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 border-btm-same-pos right-box first-row">
+                    <div class="row margin-1 between-row">
+                        <div class="d-flex">
+                            <div class="col-md-6 col-mobile ">
+                                <div class="text-parameter">Last Name</div>
+                            </div>
+                            <div class="col-md-6 col-mobile">
+                                <div class="parameter-value">{{readData.last_name}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row h-100 justify-content-between  ">
+                <div class="col-md-6 border-btm-same-pos left-box between-row">
+                    <div class="row">
+                        <div class="d-flex margin-1">
+                            <div class="col-md-6 col-mobile">
+                                <div class="text-parameter">Email</div>
+                            </div>
+                            <div class="col-md-6 col-mobile">
+                                <div class="parameter-value">{{readData.email}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 border-btm-same-pos right-box between-row border-top-none">
+                    <div class="row margin-1">
+                        <div class="d-flex">
+                            <div class="col-md-6 col-mobile ">
+                                <div class="text-parameter">Phone Number</div>
+                            </div>
+                            <div class="col-md-6 col-mobile">
+                                <div class="parameter-value">{{readData.mobile_no}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="md-5 editable" *ngIf="editProfileDetails">
+            <div class="row h-100 justify-content-between  ">
+                <div class="col-md-6 border-btm-same-pos left-box first-row">
+                    <div class="row  first-row-mob">
+                        <div class="d-flex margin-1">
+                            <div class="col-md-6 col-mobile">
+                                <div class="text-parameter blue"> First Name <span class="red">*</span></div>
+                            </div>
+                            <div class="col-md-6 col-mobile">
+                                <input type="text" name="first_name" [(ngModel)]="editData.first_name"
+                                    placeholder="Enter First Name" class="right-col-width details-input">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 border-btm-same-pos right-box first-row">
+                    <div class="row margin-1 between-row">
+                        <div class="d-flex">
+                            <div class="col-md-6 col-mobile ">
+                                <div class="text-parameter blue blue">Last Name</div>
+                            </div>
+                            <div class="col-md-6 col-mobile">
+                                <input type="text" name="last_name" [(ngModel)]="editData.last_name"
+                                    placeholder="Enter Mobile Number" class="right-col-width details-input">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row h-100 justify-content-between">
+                <div class="col-md-6 border-btm-same-pos left-box between-row">
+                    <div class="row  ">
+                        <div class="d-flex margin-1">
+                            <div class="col-md-6 col-mobile">
+                                <div class="text-parameter blue">Email</div>
+                            </div>
+                            <div class="col-md-6 col-mobile">
+                                <input type="text" name="email" [(ngModel)]="editData.email" placeholder="Enter Email"
+                                    class="right-col-width details-input">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 border-btm-same-pos right-box last-row between-row border-top-none">
+                    <div class="row margin-1">
+                        <div class="d-flex">
+                            <div class="col-md-6 col-mobile ">
+                                <div class="text-parameter blue blue">Phone Number <span class="red">*</span></div>
+                            </div>
+                            <div class="col-md-6 col-mobile">
+                                <input type="text" name="mobile_no" [(ngModel)]="editData.mobile_no"
+                                    placeholder="Enter Mobile Number" class="right-col-width details-input">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="d-flex justify-content-center gap-3">
+                    <button type="button" (click)="cancelEditProfileDetails()"
+                        class="btn btn-light waves-effect waves-light">Close</button>
+                    <button type="button" (click)="updateProfileDetails()"
+                        class="btn btn-success waves-effect waves-light">Success</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card mt-3">
+    <div class="content">
+        <form autocomplete="false">
+            <div class="row mb-2">
+                <div class="d-flex justify-content-between">
+                    <h4>Change Password</h4>
+                    <div class="d-flex edit-copy-btn">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label class="form-label">Old Password</label>
+                    <input class="form-control" type="password" name="old_password" placeholder="Enter Old Password"
+                        [(ngModel)]="password.old_password">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label class="form-label">New Password</label>
+                    <input class="form-control" type="password" name="new_password" placeholder="Enter new Password"
+                        [(ngModel)]="password.new_password">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label class="form-label">Re-enter New Password</label>
+                    <input class="form-control" type="password" name="retype_new_password"
+                        placeholder="Enter New Password" [(ngModel)]="password.retype_new_password">
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="d-flex justify-content-center gap-3">
+                    <button type="button" (click)="updatePassword()"
+                        class="btn btn-success waves-effect waves-light">Update</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

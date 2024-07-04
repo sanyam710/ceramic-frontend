@@ -1,0 +1,193 @@
+<div class="card mt-3">
+    <div class="content">
+        <!-- <div class="row mb-2"> -->
+        <div class="row mb-3">
+            <div class="d-flex justify-content-between">
+                <div>
+                    <h4>Employees</h4>
+                </div>
+                <div>
+                    <button class="btn btn-soft-primary btn-sm" (click)="addStaff()">Add Employee <i
+                            class="mdi mdi-plus align-middle ms-1"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="tb-main">
+            <table class="table table-bordered table-hover  table-centered align-middle table-nowrap">
+                <thead class="text-muted bg-light-subtle sticky-tb-head">
+                    <tr>
+
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone Numebr</th>
+                        <th>Status</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let employee of list ; let i = index">
+                        <td>{{employee.first_name}}{{employee.last_name}}</td>
+                        <td>{{employee.email}}</td>
+                        <td>{{employee.mobile_no}}</td>
+                        <td>
+                            <div *ngIf="employee.status_id==1">
+                                <span class="status green">Active</span>
+                            </div>
+                            <div *ngIf="employee.status_id==2">
+                                <span class="status warning">Inactive</span>
+                            </div>
+                            <div *ngIf="employee.status_id==3">
+                                <span class="status red">Discard</span>
+                            </div>
+                        </td>
+                        <td><button class="btn btn-soft-primary btn-sm" (click)="editEmployee(employee,i)">Edit<i
+                                    class="ri-pencil-line ms-1"></i></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- </div> -->
+    </div>
+</div>
+<p-dialog header="Add Employee" [(visible)]="addEmployeeDialog" [modal]="true" [styleClass]="'add-edit-dialog'"
+    [draggable]="false" [resizable]="false">
+    <div class="row h-100 justify-content-between">
+        <form (submit)="addNewEmployee()">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label class="form-label">First Name <span class="red">*</span></label>
+                        <input type="text" name="first_name" class="form-control " [(ngModel)]="newEmployee.first_name"
+                            placeholder="Enter First Name">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label class="form-label">Last Name <span class="red">*</span></label>
+                        <input type="text" name="last_name" class="form-control " [(ngModel)]="newEmployee.last_name"
+                            placeholder="Enter Last Name">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label class="form-label">Mobile Number<span class="red">*</span></label>
+                        <input type="text" name="mobile_no" class="form-control " [(ngModel)]="newEmployee.mobile_no"
+                            placeholder="Enter Mobile Number">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="exampleInputrounded" class="form-label">Email</label>
+                        <input type="email" name="pin_code" [(ngModel)]="newEmployee.email" class="form-control "
+                            id="exampleInputrounded" placeholder="Enter Email">
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-md-between ">
+                <div class="col-md-6 d-flex flex-column ">
+                    <div class="mb-3">
+                        <label for="exampleInputrounded" class="form-label">Status</label>
+                        <select class="form-select " name="status_id" [(ngModel)]="newEmployee.status_id"
+                            aria-label="Default select example">
+                            <option value="">Select</option>
+                            <option *ngFor="let status of employeeStatus | keyvalue" [value]="status.key">
+                                {{ status.value }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div>Permissions <span class="red">*</span></div>
+                    <div *ngFor="let permission of permissions">
+                        <div class="d-flex gap-2">
+                            <input type="checkbox" class="form-check-input pointer" [checked]="newEmployee[permission]"
+                                (change)="toggle(permission,false)" name="permission">
+                            <label [for]="permission">{{ staffPermissions[permission] }}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- </form>
+    </div> -->
+
+            <div class="d-flex justify-content-end  gap-3  mt-md-4">
+                <button type="button" (click)="addEmployeeDialog = false"
+                    class="btn btn-light waves-effect waves-light">Close</button>
+                <button type="submit" class="btn btn-success waves-effect waves-light">Save</button>
+            </div>
+
+        </form>
+    </div>
+</p-dialog>
+<p-dialog header="Edit Employee" [(visible)]="editEmployeeDialog" [modal]="true" [styleClass]="'add-edit-dialog'"
+    [draggable]="false" [resizable]="false">
+    <div class="row h-100 justify-content-between">
+        <form (submit)="updateEmployeeDetails()">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label class="form-label">First Name <span class="red">*</span></label>
+                        <input type="text" name="first_name" class="form-control " [(ngModel)]="editData.first_name"
+                            placeholder="Enter First Name">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label class="form-label">Last Name <span class="red">*</span></label>
+                        <input type="text" name="last_name" class="form-control " [(ngModel)]="editData.last_name"
+                            placeholder="Enter Last Name">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label class="form-label">Mobile Number<span class="red">*</span></label>
+                        <input type="text" name="mobile_no" class="form-control " [(ngModel)]="editData.mobile_no"
+                            placeholder="Enter Mobile Number">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="exampleInputrounded" class="form-label">Email</label>
+                        <input type="email" name="pin_code" [(ngModel)]="editData.email" class="form-control "
+                            id="exampleInputrounded" placeholder="Enter Email">
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-md-between ">
+                <div class="col-md-6 d-flex flex-column ">
+                    <div class="mb-3">
+                        <label for="exampleInputrounded" class="form-label">Status</label>
+                        <select class="form-select " name="status_id" [(ngModel)]="editData.status_id"
+                            aria-label="Default select example">
+                            <option value="">Select</option>
+                            <option *ngFor="let status of employeeStatus | keyvalue" [value]="status.key">
+                                {{ status.value }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div>Permissions <span class="red">*</span></div>
+                    <div *ngFor="let permission of permissions">
+                        <div class="d-flex gap-2">
+                            <input type="checkbox" class="form-check-input pointer" [checked]="editData[permission]"
+                                (change)="toggle(permission,true)" name="permission">
+                            <label [for]="permission">{{ staffPermissions[permission] }}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-end  gap-3  mt-md-4">
+                <button type="button" (click)="editEmployeeDialog = false"
+                    class="btn btn-light waves-effect waves-light">Close</button>
+                <button type="submit" class="btn btn-success waves-effect waves-light">Save</button>
+            </div>
+
+        </form>
+    </div>
+</p-dialog>

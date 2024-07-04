@@ -1,0 +1,189 @@
+@media only screen and (min-width: 768px) {
+
+    .left-box {
+        border: 1px solid #DFE0E0;
+
+        flex: 0 0 auto;
+        width: 49%
+    }
+
+    .right-box {
+        border: 1px solid #DFE0E0;
+
+        flex: 0 0 auto;
+        width: 50%
+    }
+
+    .first-row {
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+
+    .last-row {
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
+    .between-row {
+        border-top: 0px;
+    }
+
+
+
+
+
+
+    /* Desktop-specific styles go here */
+    .border-right {
+        border-right: 1px solid #DFE0E0;
+    }
+
+    .border-bottom-parameter {
+        width: 91%;
+        height: 1px;
+        background: #DFE0E0;
+        margin-bottom: 15px;
+    }
+
+    .border-bottom-values {
+        width: 94%;
+        height: 1px;
+        background: #DFE0E0;
+        margin-bottom: 15px;
+    }
+
+    .details-tb-partition {
+        height: calc(100% + 2rem);
+        width: 1px;
+        background: #DFE0E0;
+        margin-left: calc(var(--vz-gutter-x) * .5);
+    }
+
+    .row-margin-btm {
+        margin-bottom: 1.5rem;
+    }
+
+    .border-btm-same-pos {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .margin-1 {
+        margin-top: 2px;
+    }
+}
+
+
+
+@media only screen and (max-width: 768px) {
+    .col-mobile {
+        flex: 1 0 0%;
+        flex: 1 0 0%;
+        padding: 8px 0px;
+    }
+
+    .first-row-mob {
+        border: 1px solid #DFE0E0;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+
+    .between-row {
+        border: 1px solid #DFE0E0;
+        border-top: 0px;
+    }
+
+    .last-row-mob {
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
+    // .row .col-md-6 {
+    //     width: 100%; /* Make columns take full width on mobile screens */
+    //     margin-bottom: 15px; /* Add some spacing between the rows */
+    // }
+    // .border-bottom-parameter{
+    //     width: calc(100% - 70px);
+    //     height: 1px;
+    //     background: #DFE0E0;
+    // }
+
+    // .border-bottom-values{
+    //     width: calc(100% - 55px);
+    //     height: 1px;
+    //     background: #DFE0E0;
+    // }
+
+    // .details-tb-partition{
+    //     height: calc(100% + 2rem);width: 1px; background:#DFE0E0;     margin-left: calc(var(--vz-gutter-x) * .5);
+    // }
+}
+
+
+.editable {
+    .blue {
+        color: #286CE8;
+    }
+
+    input {
+        color: #000;
+        width: 100%;
+        font-size: 0.8512rem;
+        font-weight: 500;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+
+        &.focus {
+            border: none;
+            outline: none !important;
+        }
+    }
+
+    select {
+
+        border: none;
+        padding: 0px;
+        outline: none;
+        color: #000;
+        font-size: 16px;
+        font-weight: 500;
+
+        &:focus-visible,
+        &.focus {
+            border: none;
+        }
+    }
+
+    @media only screen and (min-width: 768px) {
+
+        // .left-col-width {
+        //     width: calc(100% - 30px);
+        // }
+
+        // .right-col-width {
+        //     width: calc(100% - 60px);
+        // }
+    }
+
+    @media only screen and (max-width: 768px) {
+        select {
+            width: 100%;
+        }
+    }
+}
+
+:host ::ng-deep {
+    .primeng-calendar-edit.p-calendar {
+        height: 32px;
+        width: 100%;
+
+        & input {
+            padding: 1px 2px;
+        }
+    }
+}
