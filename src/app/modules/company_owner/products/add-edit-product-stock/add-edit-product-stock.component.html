@@ -1,0 +1,47 @@
+<p-dialog header="{{ boolEditStock ? 'Edit Stock' : 'Add Stock' }}" [(visible)]="addOrEditStockDialog" [modal]="true"
+    [styleClass]="'add-edit-dialog'" [draggable]="false" [resizable]="false" (onHide)="canceladdOrEditStock()">
+    <div class="row h-100 justify-content-between">
+        <!-- <form (submit)="addNewMachine()"> -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label class="form-label">Dealer</label>
+                    <input type="text" name="dealer"  [(ngModel)]="stock.dealer" class="form-control "
+                        placeholder="Enter Dealer">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label class="form-label">No Of Box</label>
+                    <input type="text" name="no_of_box"  [(ngModel)]="stock.no_of_box" class="form-control "
+                        placeholder="Enter No Of Box">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label class="form-label">Per Foot Price</label>
+                    <input type="text" name="per_foot_price"  [(ngModel)]="stock.per_foot_price" class="form-control "
+                        placeholder="Enter Per Foot Price">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label class="form-label">Total Amount</label>
+                    <input type="text" name="total_amount"  [(ngModel)]="stock.total_amount" class="form-control "
+                        placeholder="Enter Total Amount">
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-end  gap-3  mt-md-4">
+            <button type="button" (click)="canceladdOrEditStock()"
+                class="btn btn-light waves-effect waves-light">Close</button>
+            <button (click)="addNewStock()" *ngIf="!boolEditStock"
+                class="btn btn-success waves-effect waves-light">Add</button>
+            <button (click)="updateStock()" *ngIf="boolEditStock && !stock.is_approved"
+                class="btn btn-success waves-effect waves-light">Save</button>
+        </div>
+        <!-- </form> -->
+    </div>
+</p-dialog>

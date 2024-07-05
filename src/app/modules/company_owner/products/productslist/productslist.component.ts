@@ -28,6 +28,8 @@ export class ProductslistComponent implements OnInit{
   boolEditProduct:boolean=false;
   productsType:any={};
   productToEditIndex:number | null=null;
+  addStockDialog:boolean=false;
+  idToAddStock:string | null=null;
   ngOnInit() {
     this.userId=this.userService.getUserId();
     this.productsType=Constants.PRODUCT_TYPES;
@@ -87,20 +89,28 @@ export class ProductslistComponent implements OnInit{
     })
 
   }
-  // async delete(id: number, index: number) {
-  //   var x = await this.sweetAlertService.warning("Warning", "Are you sure you want to delete the Client");
-  //   if (x.value) {
-  //     this.productService.deleteProduct(id).subscribe({
-  //       next: (data) => {
-  //         this.clientList.splice(index, 1);
-  //         this.toastService.showToast("Client Deleted Successfully", "success");
-  //       },
-  //       error: (error) => {
-  //         return;
-  //       }
-  //     })
-  //   }
-  // }
+  async delete(id: string, index: number) {
+    var x = await this.sweetAlertService.warning("Warning", "Are you sure you want to delete the Product");
+    if (x.value) {
+      this.productService.deleteProduct(id).subscribe({
+        next: (data) => {
+          this.productsList.splice(index, 1);
+          this.toastService.showToast("Product Deleted Successfully", "success");
+        },
+        error: (error) => {
+          return;
+        }
+      })
+    }
+  }
+  addStock(product:any){
+    this.idToAddStock=product.id;
+    this.addStockDialog=true;
+  }
+  cancelAddStock(event:any){
+    this.addStockDialog=false;
+    this.idToAddStock=null;
+  }
   goTo(url:string){
     this.router.navigate([url]);
   }
