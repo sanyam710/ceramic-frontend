@@ -1,0 +1,71 @@
+<p-dialog header="{{ boolEditOrder ? 'Edit Order' : 'Add Order' }}" [(visible)]="addEditOrderDiaog" [modal]="true"
+    [styleClass]="'add-edit-dialog'" [draggable]="false" [resizable]="false" (onHide)="closeDialog()">
+    <div class="row h-100 justify-content-between">
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label class="form-label">Amount</label>
+                    <input type="number" name="per_hour_amount" [(ngModel)]="order.amount" class="form-control "
+                        placeholder="Enter Amount">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label class="form-label">Tax Amount</label>
+                    <input type="number" name="tax_amount" [(ngModel)]="order.tax_amount" class="form-control "
+                        placeholder="Tax Amount">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label class="form-label">Total Amount</label>
+                    <input type="number " name="total_amount" [(ngModel)]="order.total_amount" class="form-control "
+                        placeholder="Enter Total Amount">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label class="form-label">Delivery Date</label>
+                    <input type="date" name="delivery_date" [(ngModel)]="order.delivery_date" class="form-control ">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label class="form-label">White Amount</label>
+                    <input type="number" name="white_amount" [(ngModel)]="order.white_amount" class="form-control "
+                        placeholder="Enter White Amount">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label class="form-label">Black Amount</label>
+                    <input type="number" name="black_amount" [(ngModel)]="order.black_amount" class="form-control "
+                        placeholder="Enter Black Amount">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mb-3">
+                    <label class="form-label">Notes</label>
+                    <input type="text" name="notes" [(ngModel)]="order.notes" class="form-control "
+                        placeholder="Enter White Amount">
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-end  gap-3  mt-md-4">
+            <button type="button" (click)="closeDialog()"
+                class="btn btn-light waves-effect waves-light">Close</button>
+            <button (click)="addNewOrder()" *ngIf="!boolEditOrder"
+                class="btn btn-success waves-effect waves-light">Add</button>
+            <button (click)="updateOrderDetails()" *ngIf="boolEditOrder"
+                class="btn btn-success waves-effect waves-light">Save</button>
+        </div>
+        <!-- </form> -->
+    </div>
+</p-dialog>

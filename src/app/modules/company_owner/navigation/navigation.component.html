@@ -9,27 +9,36 @@
 
     </div>
     <ul class="nav-links ">
-      <li class="single-menu pointer" (click)="goTo('agent/dashboard'); closeSideBar()" [pTooltip]="getTooltipText('Dashboard')">
-        <div class="single-icon-link">
-          <a class="link_name w-20" >
-           
-            <img class="nav-icons" src="../../../../assets/images/icons/home.svg" >
-            <span class="link_name">Home</span>
-          </a>
-          <i class='bx bxs-chevron-down arrow pointer bg-purple'></i>
-          <!-- <i class='bx bxs-chevron-down arrow pointer'></i> -->
-        </div>
-        <!-- <ul class="sub-menu">
-          <li><a class="link_name">Home</a></li>
-          <li><a (click)="goTo('agent/dashboard'); closeSideBar()" class="pointer">Dashboard</a></li>
-        </ul> -->
-      </li>
+        <!-- <li class="single-menu pointer" (click)="goTo('agent/dashboard'); closeSideBar()" [pTooltip]="getTooltipText('Dashboard')">
+          <div class="single-icon-link">
+            <a class="link_name w-20" >
+            
+              <img class="nav-icons" src="../../../../assets/images/icons/home.svg" >
+              <span class="link_name">Home</span>
+            </a>
+            <i class='bx bxs-chevron-down arrow pointer bg-purple'></i>
+          </div>
+        </li> -->
    
       <li class="single-menu pointer" (click)="goTo('company_owner/products'); closeSideBar()" [pTooltip]="getTooltipText('Products')">
         <div class="single-icon-link">
           <a class="link_name w-20"  >
             <img class="nav-icons" src="../../../../assets/images/icons/products.svg">
             <span class="link_name">Products</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow pointer bg-purple'></i>
+          <!-- <i class='bx bxs-chevron-down arrow pointer'></i> -->
+        </div>
+        <!-- <ul class="sub-menu">
+          <li><a class="link_name">Lead</a></li>
+          <li><a (click)="goTo('agent/leads') ; closeSideBar()" class="pointer">Lead</a></li>
+        </ul> -->
+      </li>
+      <li class="single-menu pointer" (click)="goTo('company_owner/customers'); closeSideBar()" [pTooltip]="getTooltipText('Customers')">
+        <div class="single-icon-link">
+          <a class="link_name w-20"  >
+            <img class="nav-icons" src="../../../../assets/images/icons/customers.svg">
+            <span class="link_name">Customers</span>
           </a>
           <i class='bx bxs-chevron-down arrow pointer bg-purple'></i>
           <!-- <i class='bx bxs-chevron-down arrow pointer'></i> -->

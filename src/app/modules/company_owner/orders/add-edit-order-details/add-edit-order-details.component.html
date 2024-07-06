@@ -1,0 +1,108 @@
+<p-dialog header="{{ boolEditOrderDetail ? 'Edit OrderDetail' : 'Add OrderDetail' }}"
+    [(visible)]="addEditOrderDetailDiaog" [modal]="true" [styleClass]="'add-edit-dialog'" [draggable]="false"
+    [resizable]="false" (onHide)="closeDialog()">
+    <div *ngIf="boolEditOrderDetail">
+        <div class="row h-100 justify-content-between">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label class="form-label">Product</label>
+                        <select class="form-select" name="product_id" [(ngModel)]="orderDetail.order_detail.product_id"
+                            aria-label="Default select example">
+                            <option value=null>Select</option>
+                            <option *ngFor="let product of productsList" [value]="product.id">
+                                {{product.name}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label class="form-label">Amount</label>
+                        <input type="number" name="amount" [(ngModel)]="orderDetail.order_detail.amount" class="form-control "
+                            placeholder="Enter Amount">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label class="form-label">Quantity</label>
+                        <input type="number" name="quantity" [(ngModel)]="orderDetail.order_detail.quantity" class="form-control "
+                            placeholder="Enter Quantity">
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="row">
+            <div class="col-md-12">
+                <div class="mb-3">
+                    <label class="form-label">Notes</label>
+                    <input type="text" name="notes" [(ngModel)]="orderDetail.notes" class="form-control "
+                        placeholder="Enter Notes">
+                </div>
+            </div>
+        </div> -->
+            <div class="d-flex justify-content-end  gap-3  mt-md-4">
+                <button type="button" (click)="closeDialog()"
+                    class="btn btn-light waves-effect waves-light">Close</button>
+                <button (click)="addNewOrderDetail()" *ngIf="!boolEditOrderDetail"
+                    class="btn btn-success waves-effect waves-light">Add</button>
+                <button (click)="updateOrderDetailDetails()" *ngIf="boolEditOrderDetail"
+                    class="btn btn-success waves-effect waves-light">Save</button>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!boolEditOrderDetail">
+        <div class="row h-100 justify-content-between">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label class="form-label">Product</label>
+                        <select class="form-select" name="unit_type" [(ngModel)]="orderDetail.product_id"
+                            aria-label="Default select example">
+                            <option value=null>Select</option>
+                            <option *ngFor="let product of productsList" [value]="product.id">
+                                {{product.name}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label class="form-label">Amount</label>
+                        <input type="number" name="amount" [(ngModel)]="orderDetail.amount" class="form-control "
+                            placeholder="Enter Amount">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label class="form-label">Quantity</label>
+                        <input type="number" name="quantity" [(ngModel)]="orderDetail.quantity" class="form-control "
+                            placeholder="Enter Quantity">
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="row">
+            <div class="col-md-12">
+                <div class="mb-3">
+                    <label class="form-label">Notes</label>
+                    <input type="text" name="notes" [(ngModel)]="orderDetail.notes" class="form-control "
+                        placeholder="Enter Notes">
+                </div>
+            </div>
+        </div> -->
+            <div class="d-flex justify-content-end  gap-3  mt-md-4">
+                <button type="button" (click)="closeDialog()"
+                    class="btn btn-light waves-effect waves-light">Close</button>
+                <button (click)="addNewOrderDetail()" *ngIf="!boolEditOrderDetail"
+                    class="btn btn-success waves-effect waves-light">Add</button>
+                <button (click)="updateOrderDetailDetails()" *ngIf="boolEditOrderDetail"
+                    class="btn btn-success waves-effect waves-light">Save</button>
+            </div>
+        </div>
+    </div>
+</p-dialog>
