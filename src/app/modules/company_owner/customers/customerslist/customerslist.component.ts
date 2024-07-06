@@ -51,7 +51,7 @@ export class CustomerslistComponent implements OnInit {
   updateCustomerDetails() {
     this.customerService.updateCustomer(this.customer).subscribe({
       next:(data)=>{
-        this.customersList.push(data);
+        this.customersList[this.customerToEditIndex!]=data;
         this.toastService.showToast("Customer Updated Successfully","success");
         this.closeAddOrEditCustomer();
       }
@@ -61,6 +61,7 @@ export class CustomerslistComponent implements OnInit {
   editCustomer(customer: any, index: number) {
     this.customer={... customer};
     this.addEditCustomerDialog=true;
+    this.customerToEditIndex=index; 
     this.boolEditCustomer=true;
   }
   AddCustomer() {
