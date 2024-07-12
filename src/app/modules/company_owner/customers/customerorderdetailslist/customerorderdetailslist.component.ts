@@ -25,7 +25,6 @@ export class CustomerorderdetailslistComponent {
   orderDetailsList:any=[];
   orderDetail:any={product_id:null};
   addOrEditOrderDetailDialog:boolean=false;
-  boolEditOrderDetail:boolean=false;
   orderDetailToEditIndex:number | null=null;
   orderIdToAddDetail:string | null=null;
   orderId:string | null=null;
@@ -36,7 +35,6 @@ export class CustomerorderdetailslistComponent {
       this.customerId=customer_id;
       this.orderId=order_id;
     })
-    console.log("sdfdsf");
     this.orderService.getOrderById(this.orderId!).subscribe({
       next:(data)=>{
         this.orderDetailsList=data.order_details;
@@ -49,29 +47,15 @@ export class CustomerorderdetailslistComponent {
   }
   AddOrderDetail(){
     this.addOrEditOrderDetailDialog=true;
-    this.boolEditOrderDetail=false;
-  }
-  editOrderDetail(orderDetail:any,index:number){
-    this.orderDetail={... orderDetail};
-    this.boolEditOrderDetail=true;
-    this.addOrEditOrderDetailDialog=true;
-    this.orderDetailToEditIndex=index;
-
   }
   closeAddEditOrderDetail(event:any){
     this.orderDetail={product_id:null};
-    this.boolEditOrderDetail=false;
     this.addOrEditOrderDetailDialog=false;
     this.orderDetailToEditIndex=null;
 
   }
   addOrUpdateOrderDetail(event:any){
-    if(this.boolEditOrderDetail){
-      this.orderDetailsList[this.orderDetailToEditIndex!]=event;
-    }
-    else{
       this.orderDetailsList.push(event);
-    }
     this.closeAddEditOrderDetail("false");
   }
   async delete(id: string, index: number) {

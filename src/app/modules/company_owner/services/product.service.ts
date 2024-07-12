@@ -24,9 +24,9 @@ export class ProductService {
   addStockToProduct(stock:{}){
     return this.apiService.post("/product/add_or_update_product_stock", stock);
   }
-  updateStockInProduct(stock:{}){
-    return this.apiService.post("/product/add_or_update_product_stock", stock);
-  }
+  // updateStockInProduct(stock:{}){
+  //   return this.apiService.post("/product/add_or_update_product_stock", stock);
+  // }
   getProduct(id:string){
     return this.apiService.post("/product/get_product_by_id", {id:id});
   }

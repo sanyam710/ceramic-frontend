@@ -16,9 +16,6 @@ export class ApiService {
   post(endpoint: string, data: any): Observable<any> {
     this.loaderService.setLoading(true);
     const url = `${environment.API_URL}${endpoint}`;
-    if (window.localStorage.getItem("api_token")) {
-      data.api_token = window.localStorage.getItem("api_token");
-    }
     if (window.localStorage.getItem("token")) {
       data.token = window.localStorage.getItem("token");
     }

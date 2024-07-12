@@ -14,13 +14,13 @@ export class AddEditProductStockComponent {
   ) { }
 
   @Input() stock: any = {};
-  @Input() boolEditStock: boolean = false;
+  // @Input() boolEditStock: boolean = false;
   @Input() addOrEditStockDialog: boolean = false;
   @Input() productId: string | null = null;
   @Output() close = new EventEmitter<any>();
   @Output() addOrUpdateStock=new EventEmitter<any>();
   canceladdOrEditStock() {
-    this.boolEditStock = false;
+    // this.boolEditStock = false;
     this.addOrEditStockDialog = false;
     this.close.emit(false);
   }
@@ -39,18 +39,18 @@ export class AddEditProductStockComponent {
     })
 
   }
-  updateStock() {
-    this.productService.updateStockInProduct(this.stock).subscribe({
-      next: (data) => {
-        this.toastService.showToast("Stock Updated Successfully", "success");
-        this.addOrEditStockDialog = false;
-        this.addOrUpdateStock.emit(data);
-        this.close.emit(data);
-      },
-      error: (error) => {
-        this.toastService.showToast(error,"error");
-      }
-    })
-  }
+  // updateStock() {
+  //   this.productService.updateStockInProduct(this.stock).subscribe({
+  //     next: (data) => {
+  //       this.toastService.showToast("Stock Updated Successfully", "success");
+  //       this.addOrEditStockDialog = false;
+  //       this.addOrUpdateStock.emit(data);
+  //       this.close.emit(data);
+  //     },
+  //     error: (error) => {
+  //       this.toastService.showToast(error,"error");
+  //     }
+  //   })
+  // }
 
 }

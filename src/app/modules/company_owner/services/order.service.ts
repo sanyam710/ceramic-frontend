@@ -21,14 +21,20 @@ export class OrderService {
   addOrderDetail(detail:{}) {
     return this.apiService.post("/order/add_or_update_order_detail", detail)
   }
-  updateOrderDetail(detail:{}) {
-    return this.apiService.post("/order/add_or_update_order_detail", detail)
-  }
   updateOrder(order:{}) {
     return this.apiService.post("/order/add_or_update_order", order)
   }
   removeOrderDetail(id:string) {
     return this.apiService.post("/order/remove_order_detail", {id:id})
+  }
+  addTransaction(transaction:{}) {
+    return this.apiService.post("/order/add_order_transaction", transaction)
+  }
+  updateTransaction(transaction:{}) {
+    return this.apiService.post("/order/add_order_transaction", transaction)
+  }
+  removeTransaction(id:string) {
+    return this.apiService.post("/order/remove_order_transaction", {id:id})
   }
   
 }

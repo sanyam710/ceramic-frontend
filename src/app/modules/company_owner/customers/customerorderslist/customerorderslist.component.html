@@ -27,6 +27,7 @@
                         <th>Amount</th>
                         <th>Delivery Date</th>
                         <th>Order Detail</th>
+                        <th>Transaction</th>
                         <th>Details</th>
                         <!-- <th>Delete</th> -->
                     </tr>
@@ -55,6 +56,16 @@
                         </td>
                         <td>
                             <div class="d-flex text-icon-grp">
+                                <span class="blue hover-underline" type="button"
+                                    (click)="goTo('company_owner/customers/orders/transactions/'+order.id)">View</span>
+                                <span>
+                                    <button class="btn btn-soft-primary btn-sm" (click)="AddTransaction(order.id)"><i
+                                            class="ri-add-line"></i></button>
+                                </span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex text-icon-grp">
                                 <span class="btn btn-soft-primary btn-sm" type="button"
                                     (click)="editOrder(order,i)">Edit<i class="ri-pencil-line ms-1"></i></span>
                             </div>
@@ -72,3 +83,5 @@
 <app-add-edit-order [order]="order" [customerId]="customerId" [boolEditOrder]="boolEditOrder" [addEditOrderDiaog]="addOrEditOrderDialog" (close)="closeAddEditOrder($event)" (newOrUpdatedOrder)="addOrUpdatedOrder($event)"></app-add-edit-order>
 
 <app-add-edit-order-details [orderId]="orderIdToAddDetail" [addEditOrderDetailDiaog]="addOrderDetailDialog" (close)="closeAddEditOrderDetail($event)" ></app-add-edit-order-details>
+
+<app-add-edit-transaction [addEditTransactionDiaog]="addTransactionDialog" [orderId]="orderIdToAddTransaction" (close)="closeAddTransaction($event)"></app-add-edit-transaction>

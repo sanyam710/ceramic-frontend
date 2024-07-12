@@ -28,6 +28,8 @@ export class CustomerorderslistComponent implements OnInit {
   orderToEditIndex:number | null=null;
   orderIdToAddDetail:string | null=null;
   addOrderDetailDialog:boolean=false;
+  addTransactionDialog:boolean=false;
+  orderIdToAddTransaction:string | null=null;
   ngOnInit() {
     this.route.params.subscribe(({id})=>{
       this.customerId=id;
@@ -44,8 +46,10 @@ export class CustomerorderslistComponent implements OnInit {
   }
   AddOrder(){
     this.addOrEditOrderDialog=true;
-    
-
+  }
+  AddTransaction(id:string) {
+    this.addTransactionDialog = true;
+    this.orderIdToAddTransaction=id;
   }
   goTo(url:string){
     this.router.navigate([url]);
@@ -53,7 +57,10 @@ export class CustomerorderslistComponent implements OnInit {
   showAddOrderDetailDialog(order:any){
     this.orderIdToAddDetail=order.id;
     this.addOrderDetailDialog=true;
-
+  }
+  closeAddTransaction(event:any){
+    this.addTransactionDialog = false;
+    this.orderIdToAddTransaction=null;
   }
   editOrder(order:any,index:number){
     this.order={... order};

@@ -4,7 +4,7 @@
             <div class="d-flex justify-content-between">
                 <div class="d-flex gap-2">
 
-                    <h4>Stock</h4>
+                    <h4>Transactions</h4>
                     <!-- <div class="search-grp">
                         <input class="search-input" placeholder="Search..." type="text" name="search_text"
                             (input)="onSearchInputChange($event)" [(ngModel)]="searchText">
@@ -13,7 +13,7 @@
                 </div>
                 <div class="d-flex gap-2">
                     <div>
-                        <button class="btn btn-soft-primary btn-sm " (click)="addStock()">Add<i
+                        <button class="btn btn-soft-primary btn-sm " (click)="addTransaction()">Add<i
                                 class="mdi mdi-plus align-middle ms-1"></i></button>
                     </div>
                 </div>
@@ -24,15 +24,16 @@
                 <thead class="text-muted bg-light-subtle sticky-tb-head">
                     <tr>
                     <tr>
-                        <th>Dealer</th>
-                        <th>No Of Box</th>
-                        <th>Total feet</th>
-                        <th>Total Amount</th>
+                        <th>Name</th>
+                        <th>Mode Of Payment</th>
+                        <th>Transaction Date</th>
+                        <th>Notes</th>
+                        <th>Edit</th>
                         <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngIf="stockList.length==0">
+                    <tr *ngIf="transactionsList.length==0">
                         <td colspan="100%" class="text-center">
                             <img class="no-data-icon" src="../../../../../../../assets/images/icons/no-data.svg">
                             <h5 class="margin-top-bottom-10">
@@ -40,12 +41,19 @@
                             </h5>
                         </td>
                     </tr>
-                    <tr *ngFor="let stock of stockList ; let i = index">
-                        <td>{{ stock.dealer }}</td>
-                        <td>{{ stock.no_of_box }}</td>
-                        <td>{{ stock.total_feet }}</td>
-                        <td>{{ stock.total_amount }}</td>
-                        <td><span class="pointer" (click)="delete(stock.id,i)"><img height="18px"
+                    <tr *ngFor="let transaction of transactionsList ; let i = index">
+                        <td>{{ transaction.amount }}</td>
+                        <td>{{ modeOfPayment[transaction.mode_of_payment] }}</td>
+                        <td>{{ transaction.transaction_date }}</td>
+                        <td>{{ transaction.notes }}</td>
+                        <td>
+                            <div class="d-flex text-icon-grp">
+                                <span class="btn btn-soft-primary btn-sm" type="button"
+                                    (click)="editTransaction(transaction,i)">Edit<i
+                                        class="ri-pencil-line ms-1"></i></span>
+                            </div>
+                        </td>
+                        <td><span class="pointer" (click)="delete(transaction.id,i)"><img height="18px"
                                     src="../../../../../../assets/images/trash.svg"></span>
                         </td>
                     </tr>
@@ -55,4 +63,5 @@
     </div>
 </div>
 
-<app-add-edit-product-stock [addOrEditStockDialog]="addEditStockDialog" [productId]="productId" [stock]="stock" (addOrUpdateStock)="addOrUpdateStock($event)" (close)="cancelAddEditStock($event)"></app-add-edit-product-stock>
+<app-add-edit-transaction [orderId]="orderId" [addEditTransactionDiaog]="addEditTransactionDialog"
+    [transaction]="transaction" [boolViewTransaction]="boolViewTransaction" (close)="closeAddOrEditTransaction($event)" (newOrUpdatedTransaction)="addOrUpdateTransaction($event)"></app-add-edit-transaction>

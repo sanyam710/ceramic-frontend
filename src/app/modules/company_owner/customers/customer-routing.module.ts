@@ -14,6 +14,9 @@ const routes: Routes = [
   {
     path:':customer_id/orders/details/:order_id',component:CustomerorderdetailslistComponent
   },
+  {
+    path:'orders/transactions/:id',loadChildren:()=>import('../transactions/transaction.module').then((m)=>m.TransactionModule)
+  }
   
 ];
 

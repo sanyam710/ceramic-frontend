@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
 import { CustomerorderslistComponent } from './customerorderslist/customerorderslist.component';
 import { CustomerorderdetailslistComponent } from './customerorderdetailslist/customerorderdetailslist.component';
+import { TransactionModule } from '../transactions/transaction.module';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { CustomerorderdetailslistComponent } from './customerorderdetailslist/cu
     CommonModule,
     CustomerRoutingModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    TransactionModule
   ]
 })
 export class CustomerModule { }

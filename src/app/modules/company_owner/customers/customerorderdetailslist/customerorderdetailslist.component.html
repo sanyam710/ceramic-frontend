@@ -27,7 +27,6 @@
                         <th>Amount</th>
                         <th>Product Name</th>
                         <th>Quantity</th>
-                        <th>Details</th>
                         <th>Delete</th>
                     </tr>
                 </thead>
@@ -44,12 +43,6 @@
                         <td>{{ order.order_detail.amount }}</td>
                         <td>{{ order.product.name }}</td>
                         <td>{{ order.order_detail.quantity }}</td>
-                        <td>
-                            <div class="d-flex text-icon-grp">
-                                <span class="btn btn-soft-primary btn-sm" type="button"
-                                    (click)="editOrderDetail(order,i)">Edit<i class="ri-pencil-line ms-1"></i></span>
-                            </div>
-                        </td>
                         <td><span class="pointer" (click)="delete(order.order_detail.id,i)"><img height="18px"
                                     src="../../../../../../assets/images/trash.svg"></span>
                         </td>
@@ -60,4 +53,4 @@
     </div>
 </div>
 
-<app-add-edit-order-details [orderId]="orderId" [orderDetail]="orderDetail" (newOrUpdatedOrderDetail)="addOrUpdateOrderDetail($event)" [boolEditOrderDetail]="boolEditOrderDetail"  [addEditOrderDetailDiaog]="addOrEditOrderDetailDialog" (close)="closeAddEditOrderDetail($event)" ></app-add-edit-order-details>
+<app-add-edit-order-details [orderId]="orderId" [orderDetail]="orderDetail" (newOrUpdatedOrderDetail)="addOrUpdateOrderDetail($event)"  [addEditOrderDetailDiaog]="addOrEditOrderDetailDialog" (close)="closeAddEditOrderDetail($event)" ></app-add-edit-order-details>

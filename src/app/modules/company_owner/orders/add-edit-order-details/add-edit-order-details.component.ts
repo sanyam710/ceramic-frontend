@@ -22,7 +22,6 @@ export class AddEditOrderDetailsComponent implements OnInit {
   @Input() addEditOrderDetailDiaog: boolean = false;
   @Output() close = new EventEmitter<any>();
   @Output() newOrUpdatedOrderDetail = new EventEmitter<any>();
-  @Input() boolEditOrderDetail: boolean = false;
   productsList:any=[];
   userId:string | null=null;
 
@@ -42,7 +41,6 @@ export class AddEditOrderDetailsComponent implements OnInit {
 
   closeDialog(){
     this.orderDetail={product_id:null};
-    this.boolEditOrderDetail=false;
     this.close.emit(false);
   }
   addNewOrderDetail(){
@@ -58,19 +56,19 @@ export class AddEditOrderDetailsComponent implements OnInit {
     })
 
   }
-  updateOrderDetailDetails(){
-    console.log(this.orderDetail);
-    this.orderDetail=this.orderDetail.order_detail;
-    console.log("dsfsd",this.orderDetail);
-    this.orderService.updateOrderDetail(this.orderDetail).subscribe({
-      next: (data) => {
-        this.toastService.showToast("Order Detail Updated Succesfully", "success");
-        this.newOrUpdatedOrderDetail.emit(data);
-        this.closeDialog();
-      },
-      error:(error)=>{
-      }
-    })
-  }
+  // updateOrderDetailDetails(){
+  //   console.log(this.orderDetail);
+  //   this.orderDetail=this.orderDetail.order_detail;
+  //   console.log("dsfsd",this.orderDetail);
+  //   this.orderService.updateOrderDetail(this.orderDetail).subscribe({
+  //     next: (data) => {
+  //       this.toastService.showToast("Order Detail Updated Succesfully", "success");
+  //       this.newOrUpdatedOrderDetail.emit(data);
+  //       this.closeDialog();
+  //     },
+  //     error:(error)=>{
+  //     }
+  //   })
+  // }
 
 }

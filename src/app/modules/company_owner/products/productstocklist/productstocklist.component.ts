@@ -23,7 +23,7 @@ export class ProductstocklistComponent implements OnInit {
   productId:string | null=null;
   idToAddStock:string | null=null;
   addEditStockDialog:boolean=false;
-  boolEditStock:boolean=false;
+  // boolEditStock:boolean=false;
   stock:any={};
   stockToEditIndex:number | null=null;
   ngOnInit() {
@@ -44,23 +44,23 @@ export class ProductstocklistComponent implements OnInit {
     this.idToAddStock=this.productId;
     this.addEditStockDialog=true;
   }
-  editStock(stock:any,index:number){
-    this.boolEditStock=true;
-    this.addEditStockDialog=true;
-    this.stock={... stock};
-    this.stockToEditIndex=index;
-  }
+  // editStock(stock:any,index:number){
+  //   this.boolEditStock=true;
+  //   this.addEditStockDialog=true;
+  //   this.stock={... stock};
+  //   this.stockToEditIndex=index;
+  // }
   addOrUpdateStock(event:any){
-    if(this.boolEditStock){
-      this.stockList[this.stockToEditIndex!]=event;
-    }
-    else{
+    // if(this.boolEditStock){
+    //   this.stockList[this.stockToEditIndex!]=event;
+    // }
+    // else{
       this.stockList.push(event);
-    }
+    // }
     this.cancelAddEditStock(false);
   }
   cancelAddEditStock(event:any){
-    this.boolEditStock=false;
+    // this.boolEditStock=false;
     this.addEditStockDialog=false;
     this.stockToEditIndex=null;
     this.stock={};

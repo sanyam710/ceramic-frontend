@@ -16,6 +16,11 @@ export class Constants {
         5: "Sanitary",
 
     }
+    public static readonly MODE_OF_PAYMENTS = {
+        1: "Cash",
+        2: "Cheque",     
+        3: "Online"
+      }
     public static readonly PUBLISHED = 1;
     public static readonly DRAFT = 2;
     public static readonly DISCARD = 3;

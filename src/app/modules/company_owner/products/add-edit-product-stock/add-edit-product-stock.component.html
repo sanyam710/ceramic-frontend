@@ -1,4 +1,4 @@
-<p-dialog header="{{ boolEditStock ? 'Edit Stock' : 'Add Stock' }}" [(visible)]="addOrEditStockDialog" [modal]="true"
+<p-dialog header="Add Stock" [(visible)]="addOrEditStockDialog" [modal]="true"
     [styleClass]="'add-edit-dialog'" [draggable]="false" [resizable]="false" (onHide)="canceladdOrEditStock()">
     <div class="row h-100 justify-content-between">
         <!-- <form (submit)="addNewMachine()"> -->
@@ -37,10 +37,8 @@
         <div class="d-flex justify-content-end  gap-3  mt-md-4">
             <button type="button" (click)="canceladdOrEditStock()"
                 class="btn btn-light waves-effect waves-light">Close</button>
-            <button (click)="addNewStock()" *ngIf="!boolEditStock"
+            <button (click)="addNewStock()"
                 class="btn btn-success waves-effect waves-light">Add</button>
-            <button (click)="updateStock()" *ngIf="boolEditStock && !stock.is_approved"
-                class="btn btn-success waves-effect waves-light">Save</button>
         </div>
         <!-- </form> -->
     </div>
