@@ -36,5 +36,8 @@ export class OrderService {
   removeTransaction(id:string) {
     return this.apiService.post("/order/remove_order_transaction", {id:id})
   }
+  generateInvoice(req:{}){
+    return this.apiService.postPdf("/order/print_bill",req,"invoice")
+  }
   
 }

@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Observable, map } from "rxjs";
 import { environment } from "../environments/environment";
 import { LoaderService } from "../modules/shared/services/loader.service";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root',
@@ -32,6 +32,35 @@ export class ApiService {
           }
 
         }),
+      );
+  }
+  postPdf(endpoint: string, data: any, fileName: string): Observable<any> {
+    this.loaderService.setLoading(true);
+    const url = `${environment.API_URL}${endpoint}`;
+    if (window.localStorage.getItem("token")) {
+      data.token = window.localStorage.getItem("token");
+    }
+    const headers = new HttpHeaders({
+      'Accept': 'application/pdf',
+      'Content-Type': 'application/json'
+    });
+
+    return this.http.post(url, data, { headers, responseType: 'blob' as 'json' })
+      .pipe(
+        map((response: any) => {
+          this.loaderService.setLoading(false);
+          // Handle the PDF file here
+          const blob = new Blob([response], { type: 'application/pdf' });
+          const url = window.URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `${fileName}.pdf`;
+          document.title = `${fileName}.pdf`;
+          document.body.appendChild(a);
+          a.click();
+          window.URL.revokeObjectURL(url);
+          return response;
+        })
       );
   }
 }

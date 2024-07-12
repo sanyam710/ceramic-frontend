@@ -44,6 +44,17 @@ export class CustomerorderslistComponent implements OnInit {
       }
     })
   }
+  printBill(id:string){
+    var req={"invoice_id":id}
+    this.orderService.generateInvoice(req).subscribe({
+      next:(data)=>{
+        this.toastService.showToast("Invoice generated Successfully","success");
+      },
+      error:(error)=>{
+        
+      }
+    })
+  }
   AddOrder(){
     this.addOrEditOrderDialog=true;
   }
@@ -67,7 +78,6 @@ export class CustomerorderslistComponent implements OnInit {
     this.orderToEditIndex=index;
     this.boolEditOrder=true;  
     this.addOrEditOrderDialog=true;
-
   }
   closeAddEditOrder(event:any){
     this.addOrEditOrderDialog=false;

@@ -28,6 +28,7 @@
                         <th>Delivery Date</th>
                         <th>Order Detail</th>
                         <th>Transaction</th>
+                        <th>Print</th>
                         <th>Details</th>
                         <!-- <th>Delete</th> -->
                     </tr>
@@ -63,6 +64,12 @@
                                             class="ri-add-line"></i></button>
                                 </span>
                             </div>
+                        </td>
+                        <td>
+
+                            <button class="btn btn-soft-primary btn-sm" type="button"
+                                (click)="printBill(order.id)">Print<i class="ri-printer-line ms-1"></i></button>
+
                         </td>
                         <td>
                             <div class="d-flex text-icon-grp">
