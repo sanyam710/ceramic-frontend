@@ -50,15 +50,15 @@
                         <td>{{ product.model }}</td>
                         <td>{{ product.company }}</td>
                         <td>{{ product.total_feet }}</td>
-                        <!-- <td>{{ product.available_box }}</td> -->
+                        <td>{{ product.available_box }}</td>
                         <td>
                             <div class="d-flex text-icon-grp">
                                 <span class="blue hover-underline" type="button"
                                     (click)="goTo('company_owner/products/' + product.id+'/stock')">View</span>
-                                <span>
-                                    <button class="btn btn-soft-primary btn-sm" (click)="addStock(product)"><i
+                                <!-- <span>
+                                    <button class="btn btn-soft-primary btn-sm" (click)="addStock(product,i)"><i
                                             class="ri-add-line"></i></button>
-                                </span>
+                                </span> -->
                             </div>
                         </td>
                         <td>
@@ -167,4 +167,4 @@
         </div>
     </div>
 </p-dialog>
-<app-add-edit-product-stock [addOrEditStockDialog]="addStockDialog" [productId]="idToAddStock" (close)="cancelAddStock($event)"></app-add-edit-product-stock>
+<app-add-edit-product-stock [addOrEditStockDialog]="addStockDialog" [stock]="stock" [productId]="idToAddStock" (addOrUpdateStock)="updateProductFeetAmount($event)" (close)="cancelAddStock($event)"></app-add-edit-product-stock>

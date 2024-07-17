@@ -8,6 +8,11 @@ export class Constants {
         3: "Discard"
 
     }
+    public static readonly STOCK_TYPE = {
+        1: "Sample",
+        2: "Stock",
+
+    }
     public static readonly PRODUCT_TYPES = {
         1: "Tiles",
         2: "Marble",

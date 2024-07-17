@@ -45,7 +45,7 @@ export class CustomerorderslistComponent implements OnInit {
     })
   }
   printBill(id:string){
-    var req={"invoice_id":id}
+    var req={"order_id":id}
     this.orderService.generateInvoice(req).subscribe({
       next:(data)=>{
         this.toastService.showToast("Invoice generated Successfully","success");

@@ -30,6 +30,8 @@ export class ProductslistComponent implements OnInit{
   productToEditIndex:number | null=null;
   addStockDialog:boolean=false;
   idToAddStock:string | null=null;
+  addStockIndex:number | null=null;
+  stock:any={};
   ngOnInit() {
     this.userId=this.userService.getUserId();
     this.productsType=Constants.PRODUCT_TYPES;
@@ -52,6 +54,10 @@ export class ProductslistComponent implements OnInit{
     this.addEditProductDialog=false;
     this.boolEditProduct=false;
     this.addOrEditProductDialogHeader="Add Product";
+  }
+  updateProductFeetAmount(event:any){
+    this.productsList[this.addStockIndex!].total_feet=event.total_feet;
+    this.productsList[this.addStockIndex!].total_amount=event.total_amount;
   }
   addNewProduct(){
     this.product.owner_id=this.userId;
@@ -103,13 +109,16 @@ export class ProductslistComponent implements OnInit{
       })
     }
   }
-  addStock(product:any){
+  addStock(product:any,index:number){
+    this.addStockIndex=index;
     this.idToAddStock=product.id;
     this.addStockDialog=true;
   }
   cancelAddStock(event:any){
     this.addStockDialog=false;
     this.idToAddStock=null;
+    this.stock={};
+    this.addStockIndex=null;
   }
   goTo(url:string){
     this.router.navigate([url]);

@@ -15,12 +15,15 @@ export class AddEditProductStockComponent {
 
   @Input() stock: any = {};
   // @Input() boolEditStock: boolean = false;
+  sampleStock: number | null = null;
   @Input() addOrEditStockDialog: boolean = false;
   @Input() productId: string | null = null;
   @Output() close = new EventEmitter<any>();
-  @Output() addOrUpdateStock=new EventEmitter<any>();
+  @Output() addOrUpdateStock = new EventEmitter<any>();
+
   canceladdOrEditStock() {
     // this.boolEditStock = false;
+
     this.addOrEditStockDialog = false;
     this.close.emit(false);
   }
@@ -28,13 +31,16 @@ export class AddEditProductStockComponent {
     this.stock.product_id = this.productId;
     this.productService.addStockToProduct(this.stock).subscribe({
       next: (data) => {
+        if (this.stock.is_sample_stock) {
+          this.stock.sample_stock =this.sampleStock;
+        }
         this.toastService.showToast("Product Added Successfully", "success");
         this.addOrEditStockDialog = false;
         this.addOrUpdateStock.emit(data);
         this.close.emit(data);
       },
       error: (error) => {
-        this.toastService.showToast(error,"error");
+        this.toastService.showToast(error, "error");
       }
     })
 

@@ -4,6 +4,7 @@ import { UserService } from 'src/app/modules/shared/services/user.service';
 import { ProductService } from '../../services/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SweetalertService } from 'src/app/modules/shared/services/sweetalertservice.service';
+import { Constants } from 'src/app/constants/constants';
 
 @Component({
   selector: 'app-productstocklist',
@@ -24,12 +25,14 @@ export class ProductstocklistComponent implements OnInit {
   idToAddStock:string | null=null;
   addEditStockDialog:boolean=false;
   // boolEditStock:boolean=false;
+  stockTypes:any={};
   stock:any={};
   stockToEditIndex:number | null=null;
   ngOnInit() {
     this.route.params.subscribe(({id})=>{
       this.productId=id;
     })
+    this.stockTypes=Constants.STOCK_TYPE;
     this.productService.getProduct(this.productId!).subscribe({
       next:(data)=>{
         this.stockList=data.product_stocks;
@@ -55,7 +58,16 @@ export class ProductstocklistComponent implements OnInit {
     //   this.stockList[this.stockToEditIndex!]=event;
     // }
     // else{
-      this.stockList.push(event);
+    console.log(event.length);
+    if(event.length==1){
+      this.stockList.push(event[0]);
+    }
+    if(event.length==2){
+      this.stockList.push(event[0]);
+      this.stockList.push(event[1]);
+    }
+      
+      this.stock={};
     // }
     this.cancelAddEditStock(false);
   }

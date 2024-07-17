@@ -1,19 +1,19 @@
-<p-dialog header="Add Stock" [(visible)]="addOrEditStockDialog" [modal]="true"
-    [styleClass]="'add-edit-dialog'" [draggable]="false" [resizable]="false" (onHide)="canceladdOrEditStock()">
+<p-dialog header="Add Stock" [(visible)]="addOrEditStockDialog" [modal]="true" [styleClass]="'add-edit-dialog'"
+    [draggable]="false" [resizable]="false" (onHide)="canceladdOrEditStock()">
     <div class="row h-100 justify-content-between">
         <!-- <form (submit)="addNewMachine()"> -->
         <div class="row">
             <div class="col-md-6">
                 <div class="mb-3">
                     <label class="form-label">Dealer</label>
-                    <input type="text" name="dealer"  [(ngModel)]="stock.dealer" class="form-control "
+                    <input type="text" name="dealer" [(ngModel)]="stock.dealer" class="form-control "
                         placeholder="Enter Dealer">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="mb-3">
                     <label class="form-label">No Of Box</label>
-                    <input type="text" name="no_of_box"  [(ngModel)]="stock.no_of_box" class="form-control "
+                    <input type="text" name="no_of_box" [(ngModel)]="stock.no_of_box" class="form-control "
                         placeholder="Enter No Of Box">
                 </div>
             </div>
@@ -22,23 +22,33 @@
             <div class="col-md-6">
                 <div class="mb-3">
                     <label class="form-label">Per Foot Price</label>
-                    <input type="text" name="per_foot_price"  [(ngModel)]="stock.per_foot_price" class="form-control "
+                    <input type="text" name="per_foot_price" [(ngModel)]="stock.per_foot_price" class="form-control "
                         placeholder="Enter Per Foot Price">
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="mb-3">
-                    <label class="form-label">Total Amount</label>
-                    <input type="text" name="total_amount"  [(ngModel)]="stock.total_amount" class="form-control "
-                        placeholder="Enter Total Amount">
+                <div>Sample</div>
+                <div class="mt-2">
+                    <input type="checkbox" class="form-check-input pointer" [checked]="stock.is_sample_stock"
+                        name="is_sample_stock" [(ngModel)]="stock.is_sample_stock">
+                    <label class="ms-2">Is sample included?</label>
                 </div>
             </div>
         </div>
+        <div class="row" *ngIf="stock.is_sample_stock">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label class="form-label">Sample Stock</label>
+                    <input type="number" name="sample_stock" [(ngModel)]="stock.sample_stock" class="form-control "
+                        placeholder="Enter no of sample stock ">
+                </div>
+            </div>
+        </div>
+
         <div class="d-flex justify-content-end  gap-3  mt-md-4">
             <button type="button" (click)="canceladdOrEditStock()"
                 class="btn btn-light waves-effect waves-light">Close</button>
-            <button (click)="addNewStock()"
-                class="btn btn-success waves-effect waves-light">Add</button>
+            <button (click)="addNewStock()" class="btn btn-success waves-effect waves-light">Add</button>
         </div>
         <!-- </form> -->
     </div>
