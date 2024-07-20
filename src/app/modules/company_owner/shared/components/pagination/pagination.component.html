@@ -1,0 +1,16 @@
+<div class="pagination mt-3 justify-content-end ">
+    <div class="d-flex gap-2">
+        <button class="btn btn-soft-primary btn-arrow" (click)="previousPage()">
+            <i class="ri-arrow-left-line"></i>
+        </button>
+        <div class="d-flex gap-2">
+            <button class="btn-pagination" *ngFor="let page of getPageRange()" (click)="changePage(page)"
+                [class.active]="page === selectedPage">
+                {{ page }}
+            </button>
+        </div>
+        <button class="btn btn-soft-primary btn-arrow" (click)="nextPage()">
+            <i class="ri-arrow-right-line"></i>
+        </button>
+    </div>
+</div>

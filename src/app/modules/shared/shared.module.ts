@@ -6,16 +6,14 @@ import { TooltipModule } from "primeng/tooltip";
 import { DialogModule } from "primeng/dialog";
 import { AddEditOrderComponent } from "../company_owner/orders/add-edit-order/add-edit-order.component";
 import { AddEditOrderDetailsComponent } from "../company_owner/orders/add-edit-order-details/add-edit-order-details.component";
-
-
-
-
+import { PaginationComponent } from "../company_owner/shared/components/pagination/pagination.component";
 
 @NgModule({
     declarations: [
         ToastComponent,
         AddEditOrderComponent,
-        AddEditOrderDetailsComponent
+        AddEditOrderDetailsComponent,
+        PaginationComponent
     ],
     imports: [
         CommonModule,
@@ -29,7 +27,8 @@ import { AddEditOrderDetailsComponent } from "../company_owner/orders/add-edit-o
         TooltipModule,
         DialogModule,
         AddEditOrderComponent,
-        AddEditOrderDetailsComponent
+        AddEditOrderDetailsComponent,
+        PaginationComponent
     ]
 })
 export class SharedModule { }

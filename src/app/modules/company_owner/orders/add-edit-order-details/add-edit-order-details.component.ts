@@ -9,7 +9,7 @@ import { ProductService } from '../../services/product.service';
   templateUrl: './add-edit-order-details.component.html',
   styleUrl: './add-edit-order-details.component.scss'
 })
-export class AddEditOrderDetailsComponent implements OnInit {
+export class AddEditOrderDetailsComponent {
   constructor(
     private orderService: OrderService,
     private toastService: ToastService,
@@ -25,19 +25,19 @@ export class AddEditOrderDetailsComponent implements OnInit {
   productsList:any=[];
   userId:string | null=null;
 
-  ngOnInit() {
-    this.userId=this.userService.getUserId();
-    this.productService.getProducts(this.userId!).subscribe({
-      next:(data)=>{
-        this.productsList=data.products;
+  // ngOnInit() {
+  //   this.userId=this.userService.getUserId();
+  //   this.productService.getProducts(this.userId!).subscribe({
+  //     next:(data)=>{
+  //       this.productsList=data.products;
 
-      },
-      error:(error)=>{
+  //     },
+  //     error:(error)=>{
 
-      }
-    })
+  //     }
+  //   })
     
-  }
+  // }
 
   closeDialog(){
     this.orderDetail={product_id:null};

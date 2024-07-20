@@ -9,8 +9,8 @@ export class ProductService {
     private apiService: ApiService,
   ) { }
 
-  getProducts(user_id:string) {
-    return this.apiService.post("/product/get_products_by_user_id", {user_id:user_id})
+  getProducts(req:{}) {
+    return this.apiService.post("/product/get_products_by_user_id", req)
   }
   addProduct(product:{}) {
     return this.apiService.post("/product/add_or_update_product", product);

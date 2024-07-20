@@ -27,17 +27,55 @@ export class CustomerslistComponent implements OnInit {
   customerToEditIndex:number | null=null;
   customerToAddOrder:any={};
   addOrderDialog:boolean=false;
+  customersCount: number | null = null;
+  noOfPages: number = 0;
+  selectedPage: number = 0;
+  typingTimer: any;
+  searchText: string = '';
   ngOnInit() {
     this.userId = this.userService.getUserId();
-    this.customerService.getCustomers(this.userId!).subscribe({
+    this.selectedPage = 1;
+    var req = { user_id: this.userId!, page: 1 };
+    this.customerService.getCustomers(req).subscribe({
       next: (data) => {
         this.customersList = data.customers;
+        this.customersCount = data.customers_count;
+        this.noOfPages = Math.ceil(this.customersCount! / 100)
       },
       error: (error) => {
 
       }
     })
+  }
+  onPageChange(page: number) {
+    var req = { user_id: this.userId!, page: page };
+    this.customerService.getCustomers(req).subscribe(
+      (data) => {
+        this.customersList = data.customers;
+      },
+      (error) => {
+      }
+    );
+    this.selectedPage = page;
+  }
+  onSearchInputChange(event: any) {
+    clearTimeout(this.typingTimer); // Clear the previous timer
+    this.typingTimer = setTimeout(() => {
+      this.filterProducts();
+    }, 300);
+  }
+  filterProducts() {
+    var req = { intimation_type: 1, user_id: this.userId!, query: this.searchText };
+    this.customerService.getCustomers(req).subscribe(
+      (data) => {
+        this.customersList = data.customers;
+        this.customersCount = data.customers_count;
+        this.noOfPages = Math.ceil(this.customersCount! / 100)
+      },
+      (error) => {
 
+      }
+    )
   }
   addNewCustomer() {
     this.customerService.addCustomer(this.customer).subscribe({

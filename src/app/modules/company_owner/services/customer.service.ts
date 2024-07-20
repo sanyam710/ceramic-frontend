@@ -9,8 +9,8 @@ export class CustomerService {
     private apiService: ApiService,
   ) { }
 
-  getCustomers(user_id:string) {
-    return this.apiService.post("/customer/get_customers_by_owner_id", {user_id:user_id})
+  getCustomers(req:{}) {
+    return this.apiService.post("/customer/get_customers_by_owner_id", req)
   }
   deleteCustomer(id:string) {
     return this.apiService.post("/customer/remove_customer", {id:id})
