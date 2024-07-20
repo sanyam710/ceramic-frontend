@@ -3,6 +3,7 @@ import { Observable, map } from "rxjs";
 import { environment } from "../environments/environment";
 import { LoaderService } from "../modules/shared/services/loader.service";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,8 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 export class ApiService {
   constructor(
     private http: HttpClient,
-    private loaderService: LoaderService
+    private loaderService: LoaderService,
+    private router:Router
   ) { }
 
   post(endpoint: string, data: any): Observable<any> {
@@ -28,6 +30,10 @@ export class ApiService {
           }
           else {
             this.loaderService.setLoading(false);
+            if(response.message=="Unauthenticated request"){
+              this.router.navigate(['/login'])
+              window.localStorage.clear();
+            }
             throw new Error(response.message);
           }
 
