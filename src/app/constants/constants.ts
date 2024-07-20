@@ -11,11 +11,12 @@ export class Constants {
     public static readonly STOCK_TYPE = {
         1: "Sample",
         2: "Stock",
+        3: "Broken",
 
     }
     public static readonly PRODUCT_SIZE = {
         "2 * 4": "8",
-        "32 * 64": "28.44",
+        "32 * 64": "27.55",
         "6 * 4": "24",
     }
     public static readonly PRODUCT_TYPES = {

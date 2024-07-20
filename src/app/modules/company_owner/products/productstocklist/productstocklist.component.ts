@@ -25,6 +25,7 @@ export class ProductstocklistComponent implements OnInit {
   idToAddStock:string | null=null;
   addEditStockDialog:boolean=false;
   // boolEditStock:boolean=false;
+  product:any={};
   stockTypes:any={};
   stock:any={};
   stockToEditIndex:number | null=null;
@@ -36,6 +37,7 @@ export class ProductstocklistComponent implements OnInit {
     this.productService.getProduct(this.productId!).subscribe({
       next:(data)=>{
         this.stockList=data.product_stocks;
+        this.product=data.product;
       },
       error:(error)=>{
 
@@ -65,6 +67,11 @@ export class ProductstocklistComponent implements OnInit {
     if(event.length==2){
       this.stockList.push(event[0]);
       this.stockList.push(event[1]);
+    }
+    if(event.length==3){
+      this.stockList.push(event[0]);
+      this.stockList.push(event[1]);
+      this.stockList.push(event[2]);
     }
       
       this.stock={};

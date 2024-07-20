@@ -29,6 +29,12 @@ export class AddEditProductStockComponent {
   }
   addNewStock() {
     this.stock.product_id = this.productId;
+    if(!this.stock.is_sample_stock && this.stock.sample_stock){
+      delete this.stock.sample_stock;
+    }
+    if(!this.stock.is_breakage_stock && this.stock.breakage_stock){
+      delete this.stock.breakage_stock;
+    }
     this.productService.addStockToProduct(this.stock).subscribe({
       next: (data) => {
         if (this.stock.is_sample_stock) {

@@ -4,7 +4,7 @@
             <div class="d-flex justify-content-between">
                 <div class="d-flex gap-2">
 
-                    <h4>Stock</h4>
+                    <h4>Stock - {{product.name}}</h4>
                     <!-- <div class="search-grp">
                         <input class="search-input" placeholder="Search..." type="text" name="search_text"
                             (input)="onSearchInputChange($event)" [(ngModel)]="searchText">
@@ -27,7 +27,8 @@
                         <th>Dealer</th>
                         <th>No Of Box</th>
                         <th>Stock Type</th>
-                        <th>Total feet</th>
+                        <th>Total Square feet</th>
+                        <th>Extra Expense</th>
                         <th>Total Amount</th>
                         <th>Delete</th>
                     </tr>
@@ -46,6 +47,7 @@
                         <td>{{ stock.no_of_box }}</td>
                         <td>{{ stockTypes[stock.stock_type] }}</td>
                         <td>{{ stock.total_feet }}</td>
+                        <td>{{ stock.extra_expense_per_feet }}</td>
                         <td>{{ stock.total_amount }}</td>
                         <td><span class="pointer" (click)="delete(stock.id,i)"><img height="18px"
                                     src="../../../../../../assets/images/trash.svg"></span>
