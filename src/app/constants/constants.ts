@@ -15,9 +15,15 @@ export class Constants {
 
     }
     public static readonly PRODUCT_SIZE = {
-        "2 * 4": "8",
+        "18 * 12":"1.5",
+        "12 * 12":"1",
+        "16 * 16":"1.7",
         "32 * 64": "27.55",
+        "8 * 4":"32",
         "6 * 4": "24",
+        "2 * 4": "8",
+        "2 * 2":"4",
+        "2 * 1":"2",  
     }
     public static readonly PRODUCT_TYPES = {
         1: "Tiles",
