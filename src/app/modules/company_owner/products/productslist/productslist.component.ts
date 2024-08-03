@@ -76,7 +76,7 @@ export class ProductslistComponent implements OnInit {
     }, 300);
   }
   filterProducts() {
-    var req = { intimation_type: 1, user_id: this.userId!, query: this.searchText };
+    var req = { user_id: this.userId!, query: this.searchText };
     this.productService.getProducts(req).subscribe(
       (data) => {
         this.productsList = data.products;
@@ -105,7 +105,7 @@ export class ProductslistComponent implements OnInit {
     this.product.owner_id = this.userId;
     this.productService.addProduct(this.product).subscribe({
       next: (data) => {
-        this.toastService.showToast("Product Aded Sucessfully", "succes");
+        this.toastService.showToast("Product Aded Sucessfully", "success");
         this.productsList.push(data);
         this.product = { product_type: "", size: "" };
         this.addEditProductDialog = false;

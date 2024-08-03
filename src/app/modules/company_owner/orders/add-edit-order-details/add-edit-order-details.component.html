@@ -50,41 +50,67 @@
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label class="form-label">Product</label>
-                        <select class="form-select" name="unit_type" [(ngModel)]="orderDetail.product_id"
-                            aria-label="Default select example">
-                            <option value=null>Select</option>
-                            <option *ngFor="let product of productsList" [value]="product.id">
-                                {{product.name}}
-                            </option>
-                        </select>
+                        <div class="js-searchable-dropdown" #dropdown>
+                            <span>
+                                <input type="text" class="form-control " #searchInput (ngModelChange)="searchProduct()"
+                                    [(ngModel)]="customerSearch" placeholder="Search Product ...">
+                                <span class="search-icon"><img src="../../../../../assets/images/search.svg"></span>
+                            </span>
+                            <ul class="js-searchable-dropdown-list" #dropdownList>
+                                <li class="js-searchable-dropdown-list-item" *ngFor="let item of productsList"
+                                    (click)="onItemClick(item,'customer')" [attr.data-search-value]="item">
+                                    {{ item.name }} ({{item.size}})
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label class="form-label">Amount</label>
-                        <input type="number" name="amount" [(ngModel)]="orderDetail.amount" class="form-control "
-                            placeholder="Enter Amount">
+                        <label class="form-label">Unit Type</label>
+                        <select class="form-select " name="status_id" [(ngModel)]="orderDetail.unit_type">
+                            <option value="">Select</option>
+                            <option *ngFor="let type of unitType | keyvalue" [value]="type.key">
+                                {{ type.value }}
+                            </option>
+                        </select>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label class="form-label">No of box</label>
-                        <input type="number" name="no_of_box" [(ngModel)]="orderDetail.no_of_box " class="form-control "
-                            placeholder="Enter No of box">
+                        <label class="form-label">Unit Quantity</label>
+                        <input type="number" name="unit_quantity" [(ngModel)]="orderDetail.unit_quantity "
+                            class="form-control " placeholder="Enter Unit Quantity">
                     </div>
                 </div>
-            </div>
-            <!-- <div class="row">
-            <div class="col-md-12">
-                <div class="mb-3">
-                    <label class="form-label">Notes</label>
-                    <input type="text" name="notes" [(ngModel)]="orderDetail.notes" class="form-control "
-                        placeholder="Enter Notes">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label class="form-label">Unit Price</label>
+                        <input type="number" name="unit_price" [(ngModel)]="orderDetail.unit_price "
+                            class="form-control " placeholder="Enter Unit Price">
+                    </div>
                 </div>
+
             </div>
-        </div> -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label class="form-label">Remarks</label>
+                        <input type="text" name="remarks" [(ngModel)]="orderDetail.remarks " class="form-control "
+                            placeholder="Enter Remarks">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <input type="text" name="description" [(ngModel)]="orderDetail.description "
+                            class="form-control " placeholder="Enter Description">
+                    </div>
+                </div>
+
+            </div>
             <div class="d-flex justify-content-end  gap-3  mt-md-4">
                 <button type="button" (click)="closeDialog()"
                     class="btn btn-light waves-effect waves-light">Close</button>

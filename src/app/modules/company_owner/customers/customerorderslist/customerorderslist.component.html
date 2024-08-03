@@ -24,13 +24,13 @@
                 <thead class="text-muted bg-light-subtle sticky-tb-head">
                     <tr>
                     <tr>
+                        <th>Order Date</th>
+                        <th>Delivery Date</th>
                         <th>Total Amount</th>
+                        <th>Note</th>
                         <th>Tax Amount</th>
                         <th>Cash Amount</th>
                         <th>Bill Amount</th>
-                        <th>Delivery Date</th>
-                        <th>Order Date</th>
-                        <th>Note</th>
                         <th>Order Detail</th>
                         <th>Transaction</th>
                         <th>Print</th>
@@ -48,13 +48,13 @@
                         </td>
                     </tr>
                     <tr *ngFor="let order of ordersList ; let i = index">
-                        <td>{{ order.amount }}</td>
+                        <td>{{ order.order_date }}</td>
+                        <td>{{ order.delivery_date }}</td>
+                        <td>{{ order.amount }}</td>                        
+                        <td>{{ order.notes }}</td>
                         <td>{{ order.tax_amount }}</td>
                         <td>{{ order.black_amount }}</td>
                         <td>{{ order.white_amount }}</td>
-                        <td>{{ order.delivery_date }}</td>
-                        <td>{{ order.order_date }}</td>
-                        <td>{{ order.notes }}</td>
                         <td>
                             <div class="d-flex text-icon-grp">
                                 <span class="blue hover-underline" type="button"

@@ -24,9 +24,12 @@
                 <thead class="text-muted bg-light-subtle sticky-tb-head">
                     <tr>
                     <tr>
-                        <th>Amount</th>
+                        <th>Description</th>
+                        <th>Unit Type</th>
+                        <th>Total Amount</th>
                         <th>Product Name</th>
                         <th>Quantity</th>
+                        <th>Unit Price</th>
                         <th>Delete</th>
                     </tr>
                 </thead>
@@ -40,9 +43,12 @@
                         </td>
                     </tr>
                     <tr *ngFor="let order of orderDetailsList ; let i = index">
-                        <td>{{ order.order_detail.amount }}</td>
+                        <td>{{ order.order_detail.description }}</td>
+                        <td>{{ unitTypes[order.order_detail.unit_type] }}</td>
+                        <td>{{ unitTypes[order.order_detail.total_amount] }}</td>
                         <td>{{ order.product.name }}</td>
-                        <td>{{ order.order_detail.quantity }}</td>
+                        <td>{{ order.order_detail.unit_quantity }}</td>
+                        <td>{{ order.order_detail.unit_price }}</td>
                         <td><span class="pointer" (click)="delete(order.order_detail.id,i)"><img height="18px"
                                     src="../../../../../../assets/images/trash.svg"></span>
                         </td>

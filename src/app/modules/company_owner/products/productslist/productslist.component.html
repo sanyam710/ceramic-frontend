@@ -162,6 +162,13 @@
                         placeholder="Enter Piece Per Box">
                 </div>
             </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label class="form-label">HSN Code</label>
+                    <input type="text" name="hsn_code" [(ngModel)]="product.hsn_code" class="form-control "
+                        placeholder="Enter Piece HSN Code">
+                </div>
+            </div>
         </div>
         <div class="d-flex justify-content-end  gap-3  mt-md-4">
             <button type="button" (click)="canceladdOrEditProduct()"

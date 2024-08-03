@@ -4,6 +4,7 @@ import { SweetalertService } from 'src/app/modules/shared/services/sweetalertser
 import { ToastService } from 'src/app/modules/shared/services/toast.service';
 import { UserService } from 'src/app/modules/shared/services/user.service';
 import { OrderService } from '../../services/order.service';
+import { Constants } from 'src/app/constants/constants';
 
 @Component({
   selector: 'app-customerorderdetailslist',
@@ -30,6 +31,7 @@ export class CustomerorderdetailslistComponent {
   orderId:string | null=null;
   productsList:any=[];
   userId:string | null=null;
+  unitTypes:any=Constants.UNIT_TYPE;
   ngOnInit() {
     this.route.params.subscribe(({customer_id,order_id})=>{
       this.customerId=customer_id;
