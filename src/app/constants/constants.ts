@@ -28,6 +28,17 @@ export class Constants {
         "2 * 2": "4",
         "2 * 1": "2",
     }
+    public static readonly PIECE_PER_BOX = {
+        "18 * 12": "",
+        "12 * 12": "",
+        "16 * 16": "5",
+        "32 * 64": "2",
+        "8 * 4": "2",
+        "6 * 4": "2",
+        "2 * 4": "2",
+        "2 * 2": "4",
+        "2 * 1": "5",
+    }
     public static readonly PRODUCT_TYPES = {
         1: "Tiles",
         2: "Marble",
@@ -43,7 +54,7 @@ export class Constants {
     }
     public static readonly UNIT_TYPE = {
         1: "Box",
-        2: "Square Feet",
+        // 2: "Square Feet",
     }
 
 }

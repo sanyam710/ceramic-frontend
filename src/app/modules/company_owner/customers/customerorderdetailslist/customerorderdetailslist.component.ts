@@ -24,7 +24,7 @@ export class CustomerorderdetailslistComponent {
 
   customerId:string | null=null;
   orderDetailsList:any=[];
-  orderDetail:any={product_id:null};
+  orderDetail:any={product_id:null,unit_type:""};
   addOrEditOrderDetailDialog:boolean=false;
   orderDetailToEditIndex:number | null=null;
   orderIdToAddDetail:string | null=null;
@@ -51,7 +51,7 @@ export class CustomerorderdetailslistComponent {
     this.addOrEditOrderDetailDialog=true;
   }
   closeAddEditOrderDetail(event:any){
-    this.orderDetail={product_id:null};
+    this.orderDetail={product_id:null,unit_type:""};
     this.addOrEditOrderDetailDialog=false;
     this.orderDetailToEditIndex=null;
 

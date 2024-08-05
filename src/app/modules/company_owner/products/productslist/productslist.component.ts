@@ -38,11 +38,13 @@ export class ProductslistComponent implements OnInit {
   noOfPages: number = 0;
   selectedPage: number = 0;
   typingTimer: any;
+  piecesPerBox:any={};
   ngOnInit() {
     this.userId = this.userService.getUserId();
     this.selectedPage = 1;
     this.sizeOptions = Constants.PRODUCT_SIZE;
     this.productsType = Constants.PRODUCT_TYPES;
+    this.piecesPerBox=Constants.PIECE_PER_BOX;
     var req = { user_id: this.userId!, page: 1 };
     this.productService.getProducts(req).subscribe({
       next: (data) => {
@@ -138,9 +140,8 @@ export class ProductslistComponent implements OnInit {
 
   }
   assignfeet(type: any) {
-    console.log("dsf");
-    console.log(type);
     this.product.feet_per_piece = this.sizeOptions[type];
+    this.product.piece_per_box=this.piecesPerBox[type];
   }
   async delete(id: string, index: number) {
     var x = await this.sweetAlertService.warning("Warning", "Are you sure you want to delete the Product");

@@ -24,6 +24,8 @@ export class ProductstocklistComponent implements OnInit {
   productId:string | null=null;
   idToAddStock:string | null=null;
   addEditStockDialog:boolean=false;
+  viewStockDialog:boolean=false;
+  selectedStock:any={};
   // boolEditStock:boolean=false;
   product:any={};
   stockTypes:any={};
@@ -97,6 +99,14 @@ export class ProductstocklistComponent implements OnInit {
         }
       })
     }
+  }
+  viewDetails(index:number){
+    this.viewStockDialog=true;
+    this.selectedStock=this.stockList[index];
+  }
+  closeViewDetails(){
+    this.viewStockDialog=false;
+    this.selectedStock=null;
   }
 
 }
