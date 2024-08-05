@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SweetalertService } from 'src/app/modules/shared/services/sweetalertservice.service';
 import { ToastService } from 'src/app/modules/shared/services/toast.service';
 import { UserService } from 'src/app/modules/shared/services/user.service';
+import { CustomerService } from '../../services/customer.service';
 
 @Component({
   selector: 'app-customerorderslist',
@@ -17,7 +18,8 @@ export class CustomerorderslistComponent implements OnInit {
     private orderService: OrderService,
     private sweetAlertService: SweetalertService,
     private router:Router,
-    private route:ActivatedRoute
+    private route:ActivatedRoute,
+    private customerService:CustomerService
   ) { }
 
   customerId:string | null=null;
@@ -30,6 +32,7 @@ export class CustomerorderslistComponent implements OnInit {
   addOrderDetailDialog:boolean=false;
   addTransactionDialog:boolean=false;
   orderIdToAddTransaction:string | null=null;
+  customer:any={};
   ngOnInit() {
     this.route.params.subscribe(({id})=>{
       this.customerId=id;
@@ -37,10 +40,15 @@ export class CustomerorderslistComponent implements OnInit {
     this.orderService.getOrders(this.customerId!).subscribe({
       next:(data)=>{
         this.ordersList=data;
-
       },
       error:(error)=>{
-
+      }
+    })
+    this.customerService.getCustomerById(this.customerId!).subscribe({
+      next:(data)=>{
+        this.customer=data;
+      },
+      error:(error)=>{
       }
     })
   }

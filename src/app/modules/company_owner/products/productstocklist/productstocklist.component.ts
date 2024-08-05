@@ -106,7 +106,8 @@ export class ProductstocklistComponent implements OnInit {
   }
   closeViewDetails(){
     this.viewStockDialog=false;
-    this.selectedStock=null;
+    this.selectedStock={};
+    this.stock={};
   }
 
 }

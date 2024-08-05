@@ -24,13 +24,10 @@
                 <thead class="text-muted bg-light-subtle sticky-tb-head">
                     <tr>
                     <tr>
-                        <th>Order Date</th>
                         <th>Delivery Date</th>
+                        <th>Order Date</th>
                         <th>Total Amount</th>
                         <th>Note</th>
-                        <th>Tax Amount</th>
-                        <th>Cash Amount</th>
-                        <th>Bill Amount</th>
                         <th>Order Detail</th>
                         <th>Transaction</th>
                         <th>Print</th>
@@ -48,13 +45,10 @@
                         </td>
                     </tr>
                     <tr *ngFor="let order of ordersList ; let i = index">
-                        <td>{{ order.order_date }}</td>
-                        <td>{{ order.delivery_date }}</td>
-                        <td>{{ order.amount }}</td>                        
+                        <td>{{ order.delivery_date | date:'d MMMM YYYY'}}</td>
+                        <td>{{ order.order_date | date:'d MMMM YYYY' }}</td>
+                        <td>{{ order.total_amount }}</td>                        
                         <td>{{ order.notes }}</td>
-                        <td>{{ order.tax_amount }}</td>
-                        <td>{{ order.black_amount }}</td>
-                        <td>{{ order.white_amount }}</td>
                         <td>
                             <div class="d-flex text-icon-grp">
                                 <span class="blue hover-underline" type="button"
@@ -97,7 +91,7 @@
     </div>
 </div>
 
-<app-add-edit-order [order]="order" [customerId]="customerId" [boolEditOrder]="boolEditOrder" [addEditOrderDiaog]="addOrEditOrderDialog" (close)="closeAddEditOrder($event)" (newOrUpdatedOrder)="addOrUpdatedOrder($event)"></app-add-edit-order>
+<app-add-edit-order [order]="order" [customer]="customer" [customerId]="customerId" [boolEditOrder]="boolEditOrder" [addEditOrderDiaog]="addOrEditOrderDialog" (close)="closeAddEditOrder($event)" (newOrUpdatedOrder)="addOrUpdatedOrder($event)"></app-add-edit-order>
 
 <app-add-edit-order-details [orderId]="orderIdToAddDetail" [addEditOrderDetailDiaog]="addOrderDetailDialog" (close)="closeAddEditOrderDetail($event)" ></app-add-edit-order-details>
 

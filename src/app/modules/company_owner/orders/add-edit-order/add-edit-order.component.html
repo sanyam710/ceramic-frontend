@@ -1,60 +1,45 @@
 <p-dialog header="{{ boolEditOrder ? 'Edit Order' : 'Add Order' }}" [(visible)]="addEditOrderDiaog" [modal]="true"
     [styleClass]="'add-edit-dialog'" [draggable]="false" [resizable]="false" (onHide)="closeDialog()">
     <div class="row h-100 justify-content-between">
-
-        <!-- <div class="row" *ngIf="boolEditOrder">
-            <div class="col-md-6">
-                <div class="mb-3">
-                    <label class="form-label">Total Amount</label>
-                    <input type="number" name="per_hour_amount" [(ngModel)]="order.amount" class="form-control "
-                        placeholder="Enter Total Amount">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="mb-3">
-                    <label class="form-label">Tax Amount</label>
-                    <input type="number" name="tax_amount" [(ngModel)]="order.tax_amount" class="form-control "
-                        placeholder="Tax Amount">
-                </div>
-            </div>
-        </div> -->
-        <!-- <div class="row" *ngIf="boolEditOrder">
-            <div class="col-md-6" >
-                <div class="mb-3">
-                    <label class="form-label">Bill Amount</label>
-                    <input type="number" name="white_amount" [(ngModel)]="order.white_amount" class="form-control "
-                        placeholder="Enter Bill Amount">
-                </div>
-            </div>
-            <div class="col-md-6" >
-                <div class="mb-3">
-                    <label class="form-label">Cash Amount</label>
-                    <input type="number" name="black_amount" [(ngModel)]="order.black_amount" class="form-control "
-                        placeholder="Enter Cash Amount">
-                </div>
-            </div>
-            
-        </div> -->
         <div class="row">
-            <div class="col-md-6">
-                <div class="mb-3">
-                    <label class="form-label">Delivery Date</label>
-                    <input type="date" name="delivery_date" [(ngModel)]="order.delivery_date" class="form-control ">
-                </div>
-            </div>
             <div class="col-md-6">
                 <div class="mb-3">
                     <label class="form-label">Order Date</label>
                     <input type="date" name="order_date" [(ngModel)]="order.order_date" class="form-control ">
                 </div>
             </div>
-
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label class="form-label">Delivery Date</label>
+                    <input type="date" name="delivery_date" [(ngModel)]="order.delivery_date" class="form-control ">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label class="form-label">Customer Address</label>
+                    <input type="text" name="address" [disabled]="true" [(ngModel)]="customer.address"
+                        class="form-control ">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label class="form-label">Site Address <div class="d-flex"> ( <input type="checkbox"
+                                class="form-check-input pointer" [checked]="order.is_siteAddressSame"
+                                (change)="siteAddress($event)" name="is_siteAddressSame">
+                            <label class="ms-2" style="font-size: 13px;">Is Sites address Same as Customer
+                                Address?</label>)
+                        </div></label>
+                    <input type="text" name="site_address" [(ngModel)]="order.site_address" class="form-control ">
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="mb-3">
                 <label class="form-label">Notes</label>
                 <input type="text" name="notes" [(ngModel)]="order.notes" class="form-control "
-                    placeholder="Enter White Amount">
+                    placeholder="Enter Notes">
             </div>
         </div>
         <div class="d-flex justify-content-end  gap-3  mt-md-4">

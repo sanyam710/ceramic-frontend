@@ -28,6 +28,7 @@
                         <th>Dealer</th>
                         <th>No Of Box</th>
                         <th>Total Square feet</th>
+                        <th>Remarks</th>
                         <th>View</th>
                         <th>Delete</th>
                     </tr>
@@ -46,9 +47,9 @@
                         <td>{{ stock.dealer }}</td>
                         <td>{{ stock.no_of_box }}</td>
                         <td>{{ stock.total_feet }}</td>
+                        <td>{{ stock.remarks }}</td>
                         <td>
-                            <span class="blue hover-underline" type="button"
-                                (click)="viewDetails(i)">View</span>
+                            <span class="blue hover-underline" type="button" (click)="viewDetails(i)">View</span>
                         </td>
                         <td><span class="pointer" (click)="delete(stock.id,i)"><img height="18px"
                                     src="../../../../../../assets/images/trash.svg"></span>
@@ -59,48 +60,51 @@
         </div>
     </div>
 </div>
-<p-dialog header="View Stock" [(visible)]="viewStockDialog" [modal]="true"
-    [styleClass]="'add-edit-dialog'" [draggable]="false" [resizable]="false" (onHide)="closeViewDetails()">
+<p-dialog header="View Stock" [(visible)]="viewStockDialog" [modal]="true" [styleClass]="'add-edit-dialog'"
+    [draggable]="false" [resizable]="false" (onHide)="closeViewDetails()">
     <div class="row h-100 justify-content-between">
         <div class="row">
             <div class="col-md-6">
                 <div class="mb-3">
                     <label class="form-label">Stock Type</label>
-                    <input type="text" name="dealer" [disabled]="true" [(ngModel)]="stockTypes[selectedStock.stock_type]" class="form-control "
+                    <input type="text" name="dealer" [disabled]="true"
+                        [(ngModel)]="stockTypes[selectedStock.stock_type]" class="form-control "
                         placeholder="Enter Dealer">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="mb-3">
                     <label class="form-label">Dealer</label>
-                    <input type="text" name="dealer" [disabled]="true" [(ngModel)]="selectedStock.dealer" class="form-control "
-                        placeholder="Enter Dealer">
+                    <input type="text" name="dealer" [disabled]="true" [(ngModel)]="selectedStock.dealer"
+                        class="form-control " placeholder="Enter Dealer">
                 </div>
-            </div>           
+            </div>
         </div>
         <div class="row">
             <div class="col-md-6">
                 <div class="mb-3">
                     <label class="form-label">No Of Box</label>
-                    <input type="text" name="no_of_box" [disabled]="true" [(ngModel)]="selectedStock.no_of_box" class="form-control "
-                        placeholder="Enter No Of Box">
+                    <input type="text" name="no_of_box" [disabled]="true" [(ngModel)]="selectedStock.no_of_box"
+                        class="form-control " placeholder="Enter No Of Box">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="mb-3">
                     <label class="form-label">Per Square Foot Price</label>
-                    <input type="number" name="per_foot_price" [disabled]="true" [(ngModel)]="selectedStock.per_foot_price" class="form-control "
+                    <input type="number" name="per_foot_price" [disabled]="true"
+                        [(ngModel)]="selectedStock.per_foot_price" class="form-control "
                         placeholder="Enter Per Foot Price">
                 </div>
             </div>
-            
+
         </div>
         <div class="row">
             <div class="col-md-6">
                 <div class="mb-3">
                     <label class="form-label">Extra Expense Per Square Foot</label>
-                    <input type="number" name="extra_expense_per_feet" [disabled]="true" [(ngModel)]="selectedStock.extra_expense_per_feet"
-                        class="form-control " placeholder="Enter Extra Expense">
+                    <input type="number" name="extra_expense_per_feet" [disabled]="true"
+                        [(ngModel)]="selectedStock.extra_expense_per_feet" class="form-control "
+                        placeholder="Enter Extra Expense">
                 </div>
             </div>
             <div class="col-md-6">
@@ -109,6 +113,14 @@
                     <input type="number" name="total_amount" [disabled]="true" [(ngModel)]="selectedStock.total_amount"
                         class="form-control " placeholder="Enter Total Amount">
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="mb-3">
+                <label class="form-label">Remarks</label>
+                <input type="number" name="remarks" [disabled]="true"
+                    [(ngModel)]="selectedStock.remarks" class="form-control "
+                    placeholder="Enter Remarks">
             </div>
         </div>
         <div class="d-flex justify-content-end  gap-3  mt-md-4">

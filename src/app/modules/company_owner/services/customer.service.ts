@@ -21,4 +21,7 @@ export class CustomerService {
   updateCustomer(customer:{}){
     return this.apiService.post("/customer/add_or_update_customer",customer)
   }
+  getCustomerById(id:string){
+    return this.apiService.post("/customer/get_customer_by_id",{id:id})
+  }
 }
