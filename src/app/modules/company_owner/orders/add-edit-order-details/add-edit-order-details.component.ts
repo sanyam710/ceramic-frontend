@@ -151,8 +151,9 @@ export class AddEditOrderDetailsComponent {
       this.orderDetail.description=`${this.productTypes[event.product_type]} ${event.size}`;
       this.orderDetail.product_id=event.id;
   }
-  searchProduct() {
-    this.req.query = this.customerSearch;
+  searchProduct(event:any) {
+    console.log("fd",event);
+    this.req.query = event;
     this.req.user_id = this.userId;
     this.productService.getProducts(this.req).subscribe(
       (data) => {

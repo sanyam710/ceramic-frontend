@@ -52,7 +52,7 @@
                         <label class="form-label">Product</label>
                         <div class="js-searchable-dropdown" #dropdown>
                             <span>
-                                <input type="text" class="form-control " #searchInput (ngModelChange)="searchProduct()"
+                                <input type="text" class="form-control " #searchInput (ngModelChange)="searchProduct($event)"
                                     [(ngModel)]="customerSearch" placeholder="Search Product ...">
                                 <span class="search-icon"><img src="../../../../../assets/images/search.svg"></span>
                             </span>

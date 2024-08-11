@@ -36,6 +36,22 @@
             </div>
         </div>
         <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label class="form-label">Labour Expense</label>
+                    <input type="text" name="labour_expense" [(ngModel)]="order.labour_expense"
+                        class="form-control" placeholder="Enter Labour Expense">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label class="form-label">Freight Expense</label>
+                    <input type="text" name="freight_expense" [(ngModel)]="order.freight_expense"
+                        class="form-control" placeholder="Enter Freight Expense">
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <div class="mb-3">
                 <label class="form-label">Notes</label>
                 <input type="text" name="notes" [(ngModel)]="order.notes" class="form-control "
