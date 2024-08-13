@@ -42,9 +42,7 @@ export class NavigationComponent implements OnInit, AfterViewInit {
     this.sidebar = document.getElementById("sidebar") as HTMLElement;
     this.hamburger = document.getElementById("topnav-hamburger-icon") as HTMLElement;
     const iconLinks = document.querySelectorAll(".iocn-link");
-    console.log(iconLinks);
     this.overlay = document.getElementById("overlay") as HTMLElement;
-    console.log(this.sidebar);
     iconLinks.forEach(iconLink => {
       iconLink.addEventListener('click', () => {
         // Get the parent 'li' element
@@ -129,8 +127,7 @@ export class NavigationComponent implements OnInit, AfterViewInit {
     ])
 
   }
-  toogleDropdown() {
-    console.log("vsdc");  
+  toogleDropdown() {  
     // const button = document.getElementById('page-header-user-dropdown') as HTMLElement;
     // const ProfiledropdownMenu = document.getElementById('dropdown-menu');
     // const isExpanded = button.getAttribute('aria-expanded');

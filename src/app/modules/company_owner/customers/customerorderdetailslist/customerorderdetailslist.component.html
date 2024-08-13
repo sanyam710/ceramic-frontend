@@ -30,6 +30,7 @@
                         <th>Unit Quantity</th>
                         <th>Unit Price</th>
                         <th>Total Amount</th>
+                        <th>Edit</th>
                         <th>Delete</th>
                     </tr>
                 </thead>
@@ -49,6 +50,12 @@
                         <td>{{ order.order_detail.unit_quantity }}</td>
                         <td>{{ order.order_detail.unit_price }}</td>
                         <td>{{ order.order_detail.total_amount }}</td>
+                        <td>
+                            <div class="d-flex text-icon-grp">
+                                <span class="btn btn-soft-primary btn-sm" type="button"
+                                    (click)="editOrderDetail(order,i)">Edit<i class="ri-pencil-line ms-1"></i></span>
+                            </div>
+                        </td>
                         <td><span class="pointer" (click)="delete(order.order_detail.id,i)"><img height="18px"
                                     src="../../../../../../assets/images/trash.svg"></span>
                         </td>
@@ -59,4 +66,4 @@
     </div>
 </div>
 
-<app-add-edit-order-details [orderId]="orderId" [orderDetail]="orderDetail" (newOrUpdatedOrderDetail)="addOrUpdateOrderDetail($event)"  [addEditOrderDetailDiaog]="addOrEditOrderDetailDialog" (close)="closeAddEditOrderDetail($event)" ></app-add-edit-order-details>
+<app-add-edit-order-details [selectedOrderDetailProduct]="orderDetailProduct" [boolEditOrder]="editOrder" [orderId]="orderId" [orderDetail]="orderDetail" (newOrUpdatedOrderDetail)="addOrUpdateOrderDetail($event)"  [addEditOrderDetailDiaog]="addOrEditOrderDetailDialog" (close)="closeAddEditOrderDetail($event)" ></app-add-edit-order-details>

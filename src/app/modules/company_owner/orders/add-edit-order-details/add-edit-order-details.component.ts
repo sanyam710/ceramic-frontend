@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ToastService } from 'src/app/modules/shared/services/toast.service';
 import { OrderService } from '../../services/order.service';
 import { UserService } from 'src/app/modules/shared/services/user.service';
@@ -10,7 +10,7 @@ import { Constants } from 'src/app/constants/constants';
   templateUrl: './add-edit-order-details.component.html',
   styleUrl: './add-edit-order-details.component.scss'
 })
-export class AddEditOrderDetailsComponent {
+export class AddEditOrderDetailsComponent implements OnInit ,AfterViewInit{
   constructor(
     private orderService: OrderService,
     private toastService: ToastService,
@@ -21,12 +21,13 @@ export class AddEditOrderDetailsComponent {
   @ViewChild('dropdown', { static: true }) dropdown!: ElementRef<HTMLElement>;
   // @ViewChild('emptyMessage', { static: true }) emptyMessage!: ElementRef<HTMLElement>;
   @ViewChild('dropdownList', { static: true }) dropdownList!: ElementRef<HTMLElement>;
-  @ViewChild('searchInput_products', { static: true }) searchInputProducts!: ElementRef<HTMLInputElement>;
   @ViewChild('dropdown_products', { static: true }) dropdownProducts!: ElementRef<HTMLElement>;
   @ViewChild('dropdownList_products', { static: true }) dropdownListProducts!: ElementRef<HTMLElement>;
   @Input() orderDetail: any = {product_id:null,unit_type:""};
+  @Input() boolEditOrder: boolean = false;
   @Input() orderId: string | null = null;
   @Input() addEditOrderDetailDiaog: boolean = false;
+  @Input() selectedOrderDetailProduct:any={};
   @Output() close = new EventEmitter<any>();
   @Output() newOrUpdatedOrderDetail = new EventEmitter<any>();
   productsList:any=[];
@@ -39,16 +40,21 @@ export class AddEditOrderDetailsComponent {
   ngOnInit() {
     this.userId=this.userService.getUserId();
     this.req.user_id = this.userId;
+    
     this.productService.getProducts(this.req).subscribe(
       (data) => {
         this.productsList = data.products;
-        console.log(this,this.productsList);
       },
       (error) => {
 
       }
     )
+    
+  }
+  ngAfterViewInit() {
+    if(!this.boolEditOrder){
     this.initializeEventListeners();    
+    }
   }
 
   closeDialog(){
@@ -73,9 +79,6 @@ export class AddEditOrderDetailsComponent {
     this.searchInput.nativeElement.addEventListener('focus', this.onFocus.bind(this));
     this.searchInput.nativeElement.addEventListener('blur', this.onBlur.bind(this));
     this.searchInput.nativeElement.addEventListener('keyup', this.onKeyUp.bind(this));
-    this.searchInputProducts.nativeElement.addEventListener('focus', this.onFocusProduct.bind(this));
-    this.searchInputProducts.nativeElement.addEventListener('blur', this.onBlurProduct.bind(this));
-    this.searchInputProducts.nativeElement.addEventListener('keyup', this.onKeyUpProduct.bind(this));
   }
 
   onFocus() {
@@ -95,7 +98,6 @@ export class AddEditOrderDetailsComponent {
     }, 150);
   }
   onKeyUpProduct() {
-    const inputValue = this.searchInputProducts.nativeElement.value.toLowerCase();
     const listItems = this.dropdownListProducts.nativeElement.querySelectorAll('li');
     listItems.forEach((li: Element) => {
       const listItem = li as HTMLElement;
@@ -125,7 +127,6 @@ export class AddEditOrderDetailsComponent {
   onKeyUp() {
     const inputValue = this.searchInput.nativeElement.value.toLowerCase();
     const listItems = this.dropdownList.nativeElement.querySelectorAll('li');
-    console.log(listItems);
     listItems.forEach((li: Element) => {
       const listItem = li as HTMLElement;
       listItem.style.display = 'list-item';
@@ -152,13 +153,12 @@ export class AddEditOrderDetailsComponent {
       this.orderDetail.product_id=event.id;
   }
   searchProduct(event:any) {
-    console.log("fd",event);
+    this.initializeEventListeners();    
     this.req.query = event;
     this.req.user_id = this.userId;
     this.productService.getProducts(this.req).subscribe(
       (data) => {
         this.productsList = data.products;
-        console.log(this,this.productsList);
       },
       (error) => {
 

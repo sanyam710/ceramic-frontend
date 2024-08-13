@@ -71,7 +71,6 @@ export class AddEditOrderComponent {
     else {
       this.order.site_address = null;
     }
-    console.log(this.order.is_siteAddressSame);
   }
 
 }

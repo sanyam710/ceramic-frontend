@@ -23,7 +23,6 @@ export class AddEditTransactionComponent {
   @Input() boolViewTransaction: boolean = false;
   modeOfPayment=Constants.MODE_OF_PAYMENTS;
   addNewTransaction() {
-    console.log(this.orderId);
     this.transaction.order_id = this.orderId;
     this.orderService.addTransaction(this.transaction).subscribe({
       next: (data) => {

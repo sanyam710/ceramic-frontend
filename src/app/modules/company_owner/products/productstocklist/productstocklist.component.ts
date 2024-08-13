@@ -62,7 +62,6 @@ export class ProductstocklistComponent implements OnInit {
     //   this.stockList[this.stockToEditIndex!]=event;
     // }
     // else{
-    console.log(event.length);
     if(event.length==1){
       this.stockList.push(event[0]);
     }

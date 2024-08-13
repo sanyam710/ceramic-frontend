@@ -38,7 +38,6 @@ export class EmployeesComponent implements OnInit {
     // this.employeeStatus = Constants.EMPLOYEE_STATUS;
     // this.staffPermissions = Constants.STAFF_PERMISSIONS;
     this.permissions = Object.keys(this.staffPermissions);
-    console.log(this.permissions);
 
 
     // this.employeeService.getAllEmployees(this.userId!).subscribe(
@@ -65,7 +64,6 @@ export class EmployeesComponent implements OnInit {
     this.editData = { ...employee };
     this.editDataIndex = index;
     this.editEmployeeDialog = true;
-    console.log(this.editData);
   }
   addNewEmployee() {
     if (!this.newEmployee.mobile_no || this.newEmployee.mobile_no.length != 10) {
@@ -101,7 +99,6 @@ export class EmployeesComponent implements OnInit {
       this.toastService.showToast("Select Employee Status", "error");
       return;
     }
-    console.log(this.editData);
     // this.employeeService.updateEmployee(this.editData).subscribe(
     //   (data) => {
     //     this.toastService.showToast("Employee Details Updated Successfully", "success");

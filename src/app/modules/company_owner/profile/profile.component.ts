@@ -31,7 +31,6 @@ export class ProfileComponent implements OnInit {
 
       if (staffSegment) {
         this.slectedOption = staffSegment;
-        console.log('Staff:', staffSegment);
         // Now you have access to the "staff" segment
       }
     }
@@ -48,10 +47,8 @@ export class ProfileComponent implements OnInit {
         const remainingPath = url.substring(startingIndex + 'profile'.length + 1);
         const segments = remainingPath.split('/');
         const staffSegment = segments.find(segment => segment !== '');
-        console.log("sds",staffSegment);
         if (staffSegment) {
           this.slectedOption = staffSegment;
-          console.log('Staff:', staffSegment);
           // Now you have access to the "staff" segment
         }
       }

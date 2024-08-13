@@ -27,11 +27,13 @@ export class CustomerorderdetailslistComponent {
   orderDetail:any={product_id:null,unit_type:""};
   addOrEditOrderDetailDialog:boolean=false;
   orderDetailToEditIndex:number | null=null;
+  orderDetailProduct:any={};
   orderIdToAddDetail:string | null=null;
   orderId:string | null=null;
   productsList:any=[];
   userId:string | null=null;
   unitTypes:any=Constants.UNIT_TYPE;
+  editOrder:boolean=false;
   ngOnInit() {
     this.route.params.subscribe(({customer_id,order_id})=>{
       this.customerId=customer_id;
@@ -54,10 +56,17 @@ export class CustomerorderdetailslistComponent {
     this.orderDetail={product_id:null,unit_type:""};
     this.addOrEditOrderDetailDialog=false;
     this.orderDetailToEditIndex=null;
+    this.orderDetailProduct={};
+    this.editOrder=false;
 
   }
   addOrUpdateOrderDetail(event:any){
-      this.orderDetailsList.push(event);
+    if(this.editOrder){
+      this.orderDetailsList[this.orderDetailToEditIndex!]=event;
+    }
+    else{
+    this.orderDetailsList.push(event);
+    }
     this.closeAddEditOrderDetail("false");
   }
   async delete(id: string, index: number) {
@@ -73,6 +82,15 @@ export class CustomerorderdetailslistComponent {
         }
       })
     }
+  }
+  editOrderDetail(orderDetail:any,index:number){
+    this.editOrder=true;
+    this.orderDetailToEditIndex=index;
+    this.orderDetailProduct=orderDetail.product;
+    this.orderDetail=orderDetail.order_detail;
+
+    this.addOrEditOrderDetailDialog=true;
+
   }
 
 }

@@ -8,3 +8,4 @@ export const environment: Environment = {
   // API_URL:"http://127.0.0.1:3000"
   // API_URL: "http://13.235.87.96"
 };
+// aws s3 cp C:\Users\Admin\Desktop\ceramic-frontend\dist\ceramic-frontend s3://ceramic.isws.co.in --recursive 

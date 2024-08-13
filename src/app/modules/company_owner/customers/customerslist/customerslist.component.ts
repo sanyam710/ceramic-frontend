@@ -128,7 +128,6 @@ export class CustomerslistComponent implements OnInit {
   showAddOrderDialog(customer:any){
     this.addOrderDialog=true;
     this.customerToAddOrder=customer;
-    console.log(this.customerToAddOrder);
   }
   goTo(url:string){
     this.router.navigate([url]);
