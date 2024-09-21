@@ -1,0 +1,43 @@
+<div class="card">
+    <div class="content">
+        <div class="row mb-2">
+            <h4>Buyer Details</h4>
+        </div>
+
+        <div class="tb-main">
+            <table class="table table-bordered table-hover  table-centered align-middle table-nowrap">
+                <thead class="text-muted bg-light-subtle sticky-tb-head">
+                    <tr>
+                    <tr>
+                        <th>Name</th>
+                        <th>Mobile Number</th>
+                        <th>Order Date</th>
+                        <th>Unit Type</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Site Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngIf="buyerList.length==0">
+                        <td colspan="100%" class="text-center">
+                            <img class="no-data-icon" src="../../../../../assets/images/icons/no-data.svg">
+                            <h5 class="margin-top-bottom-10">
+                                No Data To Show
+                            </h5>
+                        </td>
+                    </tr>
+                    <tr *ngFor="let buyer of buyerList ; let i = index">
+                        <td>{{ buyer.customer_name }}</td>
+                        <td>{{ buyer.customer_mobile_no }}</td>
+                        <td>{{ buyer.order_date | date:'d MMMM YYYY' }}</td>
+                        <td>{{ unitTypes[buyer.order_unit_type] }}</td>
+                        <td>{{ buyer.order_unit_quantity }}</td>
+                        <td>{{ buyer.order_unit_price }}</td>
+                        <td>{{ buyer.site_address }}</td> 
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

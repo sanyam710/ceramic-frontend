@@ -33,4 +33,7 @@ export class ProductService {
   deleteProductStock(id:string){
     return this.apiService.post("/product/remove_product_stock", {id:id});
   }
+  getProductBuyerDetails(product_id:string){
+    return this.apiService.post("/product/get_product_buyer_details", {product_id:product_id});
+  }
 }

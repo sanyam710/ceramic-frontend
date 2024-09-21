@@ -7,13 +7,15 @@ import { SharedModule } from '../../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { AddEditProductStockComponent } from './add-edit-product-stock/add-edit-product-stock.component';
 import { ProductstocklistComponent } from './productstocklist/productstocklist.component';
+import { ProductbuyerdetailsComponent } from './productbuyerdetails/productbuyerdetails.component';
 
 
 @NgModule({
   declarations: [
     ProductslistComponent,
     AddEditProductStockComponent,
-    ProductstocklistComponent 
+    ProductstocklistComponent,
+    ProductbuyerdetailsComponent
   ],
   imports: [
     CommonModule,

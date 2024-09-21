@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProductslistComponent } from './productslist/productslist.component';
 import { ProductstocklistComponent } from './productstocklist/productstocklist.component';
 import { AuthGuard } from '../../shared/guards/auth-guard/auth-guard';
+import { ProductbuyerdetailsComponent } from './productbuyerdetails/productbuyerdetails.component';
 
 const routes: Routes = [
   {
@@ -10,6 +11,9 @@ const routes: Routes = [
   },
   {
     path:':id/stock',component:ProductstocklistComponent,canActivate:[AuthGuard]
+  },
+  {
+    path:'buyer_details/:id',component:ProductbuyerdetailsComponent,canActivate:[AuthGuard]
   },
   
 ];

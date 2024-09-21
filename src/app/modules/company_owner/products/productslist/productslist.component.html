@@ -4,7 +4,7 @@
             <div class="d-flex justify-content-between">
                 <div class="d-flex gap-2">
 
-                    <h4>Products</h4>
+                    <h4>Employee</h4>
                     <div class="search-grp">
                         <input class="search-input" placeholder="Search..." type="text" name="search_text"
                             (input)="onSearchInputChange($event)" [(ngModel)]="searchText">
@@ -31,6 +31,7 @@
                         <th>Total Square Feet</th>
                         <th>Available box</th>
                         <th>Stock</th>
+                        <th>Buyer Details</th>
                         <th>Details</th>
                         <th>Delete</th>
                     </tr>
@@ -55,10 +56,12 @@
                             <div class="d-flex text-icon-grp">
                                 <span class="blue hover-underline" type="button"
                                     (click)="goTo('company_owner/products/' + product.id+'/stock')">View</span>
-                                <!-- <span>
-                                    <button class="btn btn-soft-primary btn-sm" (click)="addStock(product,i)"><i
-                                            class="ri-add-line"></i></button>
-                                </span> -->
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex text-icon-grp">
+                                <span class="blue hover-underline" type="button"
+                                    (click)="goTo('company_owner/products/buyer_details/' + product.id)">View</span>
                             </div>
                         </td>
                         <td>
