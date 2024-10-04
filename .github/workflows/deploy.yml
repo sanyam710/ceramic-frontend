@@ -1,0 +1,44 @@
+name: Deploy to AWS S3
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '18'
+
+    - name: Install Angular CLI
+      run: npm install -g @angular/cli@16.2.6
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build Angular app
+      run: ng build
+
+    - name: Deploy to S3
+      uses: jakejarvis/s3-sync-action@master
+      with:
+        args: --delete
+      env:
+        AWS_S3_BUCKET: ${{ secrets.FRONTEND_S3_BUCKET_NAME }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_AGENTHELP_BACKEND_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_AGENTHELP_BACKEND_SECRET_ACCESS_KEY_ID }}
+        SOURCE_DIR: dist/${{ secrets.ANGULAR_APP_NAME }}
+    - name: Invalidate CloudFront cache
+      run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_AGENTHELP_BACKEND_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_AGENTHELP_BACKEND_SECRET_ACCESS_KEY_ID }}
+        AWS_REGION: ${{ secrets.AWS_REGION }}
